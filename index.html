@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trumuxi</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #080b12;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 900px;
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .logo {
+      font-size: 58px;
+      font-weight: 900;
+      letter-spacing: 5px;
+      margin-bottom: 15px;
+      background: linear-gradient(90deg, #ffffff, #5da9ff, #ffffff);
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(80,150,255,.5);
+    }
+
+    .subtitle {
+      color: #9da7b8;
+      font-size: 18px;
+      margin-bottom: 45px;
+    }
+
+    .coin {
+      margin: auto;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, #172b4d, #07101f);
+      border: 5px solid #4b9cff;
+      box-shadow:
+        0 0 25px #2277ff,
+        0 0 70px rgba(34,119,255,.35),
+        inset 0 0 30px rgba(80,160,255,.3);
+      animation: pulse 2.5s infinite;
+    }
+
+    .coin span {
+      font-size: 75px;
+      font-weight: 900;
+      color: white;
+    }
+
+    @keyframes pulse {
+      0%,100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.06);
+      }
+    }
+
+    .card {
+      margin-top: 50px;
+      padding: 30px;
+      border-radius: 22px;
+      background: rgba(18,24,36,.85);
+      border: 1px solid #273449;
+      box-shadow: 0 15px 50px rgba(0,0,0,.4);
+    }
+
+    .card h2 {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      color: #aeb8c8;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 14px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: white;
+      background: #1769e0;
+      font-weight: bold;
+      transition: .3s;
+    }
+
+    .button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 25px rgba(40,130,255,.6);
+    }
+
+    .button.secondary {
+      background: #182131;
+      border: 1px solid #344258;
+    }
+
+    footer {
+      margin-top: 35px;
+      color: #667085;
+      font-size: 13px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="logo">TRUMUXI</div>
+
+    <div class="subtitle">
+      The next generation digital currency
+    </div>
+
+    <div class="coin">
+      <span>T</span>
+    </div>
+
+    <div class="card">
+      <h2>Welcome to Trumuxi</h2>
+
+      <p>
+        Trumuxi is a digital currency concept designed
+        for a fast, modern and decentralized future.
+      </p>
+
+      <div class="buttons">
+        <a class="button" href="#">Explore Trumuxi</a>
+        <a class="button secondary" href="#">Whitepaper</a>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 Trumuxi — Digital Currency
+    </footer>
+
+  </div>
+
+</body>
+</html>
