@@ -1,1 +1,1049 @@
-https://chatgpt.com/backend-api/estuary/content?id=file_00000000cd3c81f48847ef71aeca8cbe&fn=trumuxi_index.html&cd=attachment&ts=496956&p=fs&cid=1&sig=aef4abe0a7e2d446ebeccf0c9d5fde590e95489d684c1aa8a2f5165158e22e84&v=0
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="TRUMUXI — The Future Has A Name. A new crypto concept.">
+
+<title>TRUMUXI | The Future Has A Name</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+background:#050713;
+color:white;
+overflow-x:hidden;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:15px;
+left:5%;
+width:90%;
+z-index:99;
+background:rgba(10,12,25,.75);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.1);
+border-radius:20px;
+padding:15px 25px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:25px;
+font-weight:900;
+letter-spacing:3px;
+}
+
+.logo span{
+color:#ffd34d;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:15px;
+font-size:14px;
+}
+
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+position:relative;
+padding-top:100px;
+}
+
+
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:#8c52ff;
+filter:blur(150px);
+opacity:.25;
+border-radius:50%;
+}
+
+
+.coin{
+width:190px;
+height:190px;
+border-radius:50%;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+linear-gradient(145deg,#fff2a8,#d99500);
+
+box-shadow:
+0 0 50px #ffd34d,
+inset 0 0 30px white;
+
+animation:move 4s infinite;
+}
+
+
+.coin h2{
+font-size:100px;
+color:#111;
+}
+
+
+@keyframes move{
+
+50%{
+transform:translateY(-15px);
+}
+
+}
+
+
+h1{
+
+font-size:90px;
+letter-spacing:8px;
+
+background:linear-gradient(
+90deg,
+white,
+#ffd34d,
+white
+);
+
+-webkit-background-clip:text;
+color:transparent;
+
+}
+
+
+.subtitle{
+
+margin:25px auto;
+max-width:700px;
+font-size:18px;
+line-height:2;
+color:#bfc5d8;
+
+}
+
+
+.btn{
+
+display:inline-block;
+padding:14px 30px;
+border-radius:15px;
+margin:10px;
+font-weight:bold;
+text-decoration:none;
+
+}
+
+
+.gold{
+
+background:#ffd34d;
+color:#111;
+
+}
+
+
+.dark{
+
+border:1px solid #555;
+color:white;
+
+}
+
+
+/* SECTIONS */
+
+section{
+
+padding:100px 0;
+
+}
+
+
+.title{
+
+font-size:45px;
+margin-bottom:20px;
+
+}
+
+
+.text{
+
+color:#bfc5d8;
+line-height:2;
+.card-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+
+}
+
+
+.card{
+
+background:
+linear-gradient(
+145deg,
+rgba(255,255,255,.08),
+rgba(255,255,255,.02)
+);
+
+border:1px solid rgba(255,255,255,.12);
+
+border-radius:25px;
+
+padding:30px;
+
+transition:.3s;
+
+}
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+border-color:#ffd34d;
+
+}
+
+
+.card h3{
+
+color:#ffd34d;
+margin-bottom:15px;
+
+}
+
+
+.card p{
+
+color:#bfc5d8;
+line-height:1.8;
+
+}
+
+
+/* FOUR NAMES */
+
+
+.people{
+
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+
+gap:20px;
+
+}
+
+
+.person{
+
+height:250px;
+
+position:relative;
+
+overflow:hidden;
+
+background:
+linear-gradient(
+145deg,
+#15182b,
+#060711
+);
+
+}
+
+
+.person .letter{
+
+font-size:70px;
+font-weight:900;
+color:#ffd34d;
+
+}
+
+
+.person h3{
+
+font-size:25px;
+
+}
+
+
+.person span{
+
+color:#aaa;
+
+}
+
+
+/* TOKENOMICS */
+
+
+.bar{
+
+height:14px;
+background:#22263a;
+border-radius:20px;
+overflow:hidden;
+margin:15px 0;
+
+}
+
+
+.fill{
+
+height:100%;
+background:
+linear-gradient(
+90deg,
+#8c52ff,
+#ffd34d
+);
+
+}
+
+
+
+.token-row{
+
+display:flex;
+justify-content:space-between;
+margin-top:15px;
+
+}
+
+
+
+/* ROADMAP */
+
+
+.roadmap{
+
+display:grid;
+grid-template-columns:
+repeat(4,1fr);
+
+gap:20px;
+
+}
+
+
+.phase{
+
+min-height:220px;
+
+}
+
+
+
+.phase strong{
+
+color:#ffd34d;
+
+}
+
+
+
+.phase li{
+
+list-style:none;
+color:#bbb;
+margin:10px 0;
+
+}
+
+
+
+/* DASHBOARD */
+
+
+.stats{
+
+display:grid;
+grid-template-columns:
+repeat(3,1fr);
+
+gap:20px;
+
+}
+
+
+
+.number{
+
+font-size:40px;
+font-weight:bold;
+color:#ffd34d;
+
+}
+
+
+
+/* COMMUNITY */
+
+
+.community{
+
+text-align:center;
+
+background:
+radial-gradient(
+circle,
+rgba(140,82,255,.25),
+transparent
+);
+
+border-radius:30px;
+
+padding:60px 20px;
+
+}
+
+
+
+/* FOOTER */
+
+
+footer{
+
+border-top:
+1px solid rgba(255,255,255,.1);
+
+padding:40px 0;
+
+color:#888;
+
+text-align:center;
+
+}
+
+
+
+/* MOBILE */
+
+
+@media(max-width:800px){
+
+h1{
+
+font-size:50px;
+
+}
+
+
+.people{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+
+.roadmap{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+
+}
+
+
+@media(max-width:500px){
+
+.people,
+.roadmap{
+
+grid-template-columns:1fr;
+
+}
+
+
+nav a{
+
+display:none;
+
+}
+
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<nav>
+
+<div class="logo">
+TRU<span>MUXI</span>
+</div>
+
+<div>
+
+<a href="#about">About</a>
+<a href="#token">Token</a>
+<a href="#roadmap">Roadmap</a>
+
+</div>
+
+</nav>
+
+
+<section class="hero">
+
+<div class="glow"></div>
+
+<div class="container">
+
+
+<div class="coin">
+
+<h2>T</h2>
+
+</div>
+
+
+<h1>
+TRUMUXI
+</h1>
+
+
+<p class="subtitle">
+
+Four names. One identity.
+A futuristic crypto vision built for the next generation.
+
+</p>
+
+
+<a class="btn gold" href="#about">
+Discover
+</a>
+
+<a class="btn dark" href="#roadmap">
+Roadmap
+</a>
+
+
+</div>
+
+</section>
+}
+  
+<section id="about">
+
+<div class="container">
+
+<h2 class="title">
+The Origin Of TRUMUXI
+</h2>
+
+<p class="text">
+
+TRUMUXI is a futuristic crypto concept.
+Four identities combine into one symbol:
+TRUM + UX + I.
+
+</p>
+
+
+<div class="people">
+
+
+<div class="card person">
+
+<div class="letter">T</div>
+
+<h3>Trump</h3>
+
+<span>TRUM identity</span>
+
+</div>
+
+
+
+<div class="card person">
+
+<div class="letter">P</div>
+
+<h3>Putin</h3>
+
+<span>Power & movement</span>
+
+</div>
+
+
+
+
+<div class="card person">
+
+<div class="letter">E</div>
+
+<h3>Elon Musk</h3>
+
+<span>Technology & innovation</span>
+
+</div>
+
+
+
+<div class="card person">
+
+<div class="letter">C</div>
+
+<h3>China</h3>
+
+<span>Future & scale</span>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section>
+
+
+<div class="container">
+
+
+<h2 class="title">
+
+Crypto Dashboard
+
+</h2>
+
+
+
+<div class="stats">
+
+
+<div class="card">
+
+<div class="number">
+
+TMX
+
+</div>
+
+<p>
+Token Symbol
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="number">
+
+-
+
+</div>
+
+<p>
+Live Price
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<div class="number">
+
+1B
+
+</div>
+
+<p>
+Total Supply (Example)
+</p>
+
+</div>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<section id="token">
+
+
+<div class="container">
+
+
+<h2 class="title">
+
+Tokenomics
+
+</h2>
+
+
+
+<div class="card">
+
+
+<div class="token-row">
+
+<span>
+Community
+</span>
+
+<b>
+40%
+</b>
+
+</div>
+
+
+<div class="bar">
+
+<div class="fill" style="width:40%"></div>
+
+</div>
+
+
+
+<div class="token-row">
+
+<span>
+Liquidity
+</span>
+
+<b>
+25%
+</b>
+
+</div>
+
+
+<div class="bar">
+
+<div class="fill" style="width:25%"></div>
+
+</div>
+
+
+
+
+<div class="token-row">
+
+<span>
+Marketing
+</span>
+
+<b>
+15%
+</b>
+
+</div>
+
+
+<div class="bar">
+
+<div class="fill" style="width:15%"></div>
+
+</div>
+
+
+
+<div class="token-row">
+
+<span>
+Development
+</span>
+
+<b>
+20%
+</b>
+
+</div>
+
+
+<div class="bar">
+
+<div class="fill" style="width:20%"></div>
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+<section id="roadmap">
+
+
+<div class="container">
+
+
+<h2 class="title">
+
+Roadmap
+
+</h2>
+
+
+<div class="roadmap">
+
+
+
+<div class="card phase">
+
+<strong>
+PHASE 01
+</strong>
+
+<h3>
+Foundation
+</h3>
+
+
+<ul>
+
+<li>✓ Brand creation</li>
+
+<li>✓ Website</li>
+
+<li>Community building</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<div class="card phase">
+
+
+<strong>
+PHASE 02
+</strong>
+
+
+<h3>
+Development
+</h3>
+
+
+<ul>
+
+<li>Blockchain choice</li>
+
+<li>Smart Contract</li>
+
+<li>Security</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<div class="card phase">
+
+
+<strong>
+PHASE 03
+</strong>
+
+
+<h3>
+Launch
+</h3>
+
+
+<ul>
+
+<li>Liquidity</li>
+
+<li>Listings</li>
+
+<li>Marketing</li>
+
+</ul>
+
+
+</div>
+
+
+
+
+
+<div class="card phase">
+
+
+<strong>
+PHASE 04
+</strong>
+
+
+<h3>
+Expansion
+</h3>
+
+
+<ul>
+
+<li>Global Community</li>
+
+<li>Partners</li>
+
+<li>New Utilities</li>
+
+</ul>
+
+
+</div>
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+<section>
+
+<div class="container">
+
+<div class="community">
+
+
+<h2 class="title">
+
+The Future Has A Name
+
+</h2>
+
+
+<p class="text">
+
+Join the TRUMUXI journey.
+Official links, contract address and exchanges
+will be added after launch.
+
+</p>
+
+
+
+<a class="btn gold" href="#">
+Telegram
+</a>
+
+
+<a class="btn dark" href="#">
+Twitter / X
+</a>
+
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+<div class="container">
+
+© 2026 TRUMUXI  
+<br>
+The future crypto concept.
+
+</div>
+
+</footer>
+
+
+
+</body>
+
+</html>
