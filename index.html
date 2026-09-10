@@ -4,9 +4,11 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>TRUMUXI | The Future Has A Name</title>
+
 
 <style>
 
@@ -14,49 +16,31 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, sans-serif;
+font-family:Arial,sans-serif;
 }
+
 
 body{
 
 background:
-radial-gradient(circle at top,#3b2600,#050505 55%);
+radial-gradient(circle,#4b3200,#050505 65%);
 
 color:white;
-
-overflow-x:hidden;
-
-}
-
-
-.container{
-
-width:90%;
-max-width:1200px;
-margin:auto;
 
 }
 
 
 nav{
 
-position:fixed;
+padding:20px;
 
-top:20px;
+border-bottom:1px solid #dcae36;
 
-left:5%;
+color:#ffd34d;
 
-width:90%;
+font-size:25px;
 
-z-index:99;
-
-background:rgba(0,0,0,.75);
-
-border:1px solid #dcae36;
-
-border-radius:25px;
-
-padding:15px 25px;
+font-weight:bold;
 
 display:flex;
 
@@ -65,125 +49,45 @@ justify-content:space-between;
 }
 
 
-.logo{
-
-font-size:28px;
-
-font-weight:900;
-
-color:#ffd34d;
-
-letter-spacing:3px;
-
-}
-
-
-
-.hero{
-
-min-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-text-align:center;
-
-position:relative;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.35),
-rgba(0,0,0,.8)
-),
-
-url("space.jpg");
-
-background-size:cover;
-
-background-position:center;
-
-}
-
-
-
-.glow{
-
-position:absolute;
-
-width:450px;
-
-height:450px;
-
-background:#ffd34d;
-
-filter:blur(150px);
-
-opacity:.25;
-
-}
-
-
 
 .coin{
 
-width:250px;
+margin:100px auto 30px;
 
-height:250px;
+width:230px;
+
+height:230px;
 
 border-radius:50%;
-
-margin:auto;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
 
 background:
 
 linear-gradient(
 145deg,
-#fff4a3,
+#fff19a,
 #c88900
 );
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
 
 
 box-shadow:
 
 0 0 90px #ffd34d;
 
-
-animation:float 4s infinite;
-
 }
 
 
 
-.coin span{
+.coin b{
 
-font-size:120px;
-
-font-weight:900;
+font-size:110px;
 
 color:#111;
-
-}
-
-
-
-@keyframes float{
-
-50%{
-
-transform:translateY(-20px);
-
-}
 
 }
 
@@ -191,58 +95,35 @@ transform:translateY(-20px);
 
 h1{
 
-font-size:85px;
+text-align:center;
+
+font-size:75px;
 
 color:#ffd34d;
 
-letter-spacing:8px;
-
-margin:35px 0;
-
-text-shadow:
-
-0 0 30px #ffd34d;
+text-shadow:0 0 30px #ffd34d;
 
 }
 
 
 
-.hero p{
+.hero-text{
+
+text-align:center;
 
 font-size:22px;
 
-color:#ddd;
-
 line-height:2;
 
-}
-
-
-
-.btn{
-
-display:inline-block;
-
-margin-top:35px;
-
-padding:16px 40px;
-
-border-radius:30px;
-
-background:#ffd34d;
-
-color:#111;
-
-font-weight:bold;
-
-text-decoration:none;
+margin:20px;
 
 }
+
 
 
 section{
 
-padding:90px 0;
+padding:50px 5%;
 
 }
 
@@ -250,98 +131,25 @@ padding:90px 0;
 
 .title{
 
-font-size:42px;
+font-size:38px;
 
 color:#ffd34d;
 
-margin-bottom:40px;
+margin-bottom:30px;
 
 }
 
 
-</style>
 
-</head>
-
-
-<body>
-
-
-<nav>
-
-<div class="logo">
-
-🪙 TRUMUXI
-
-</div>
-
-
-<div>
-
-TMX
-
-</div>
-
-</nav>
-
-
-
-<section class="hero">
-
-
-<div class="glow"></div>
-
-
-<div class="container">
-
-
-<div class="coin">
-
-<span>
-T
-</span>
-
-</div>
-
-
-<h1>
-
-TRUMUXI
-
-</h1>
-
-
-<p>
-
-Four Names. One Vision.
-
-<br>
-
-The Future Crypto Concept
-
-</p>
-
-
-<a class="btn" href="#market">
-
-ENTER
-
-</a>
-
-
-</div>
-
-
-<style>
-
-.market-grid{
+.grid{
 
 display:grid;
 
 grid-template-columns:
+
 repeat(auto-fit,minmax(220px,1fr));
 
-gap:25px;
+gap:20px;
 
 }
 
@@ -349,13 +157,7 @@ gap:25px;
 
 .card{
 
-background:
-
-linear-gradient(
-145deg,
-rgba(255,255,255,.12),
-rgba(0,0,0,.8)
-);
+background:#111;
 
 border:1px solid #dcae36;
 
@@ -365,57 +167,15 @@ padding:25px;
 
 text-align:center;
 
-box-shadow:
-
-0 0 30px rgba(255,211,77,.15);
-
-backdrop-filter:blur(10px);
-
-}
-
-
-
-.card:hover{
-
-transform:translateY(-8px);
-
-box-shadow:
-
-0 0 40px #ffd34d;
-
 }
 
 
 
 .card img{
 
-width:80px;
+width:75px;
 
-height:80px;
-
-border-radius:50%;
-
-margin-bottom:15px;
-
-}
-
-
-
-.card h3{
-
-font-size:26px;
-
-color:#ffd34d;
-
-}
-
-
-
-.symbol{
-
-color:#aaa;
-
-font-size:18px;
+height:75px;
 
 }
 
@@ -423,21 +183,13 @@ font-size:18px;
 
 .price{
 
-font-size:32px;
+font-size:30px;
 
 font-weight:bold;
 
 color:#ffd34d;
 
-margin:20px 0;
-
-}
-
-
-
-.live{
-
-color:#62ff9b;
+margin:15px;
 
 }
 
@@ -446,25 +198,61 @@ color:#62ff9b;
 </style>
 
 
+</head>
 
 
-<section id="market">
+<body>
 
 
-<div class="container">
+<nav>
 
+<div>
+🪙 TRUMUXI
+</div>
+
+<div>
+TMX
+</div>
+
+</nav>
+
+
+
+<div class="coin">
+
+<b>T</b>
+
+</div>
+
+
+
+<h1>
+
+TRUMUXI
+
+</h1>
+
+
+
+<p class="hero-text">
+
+Four Names. One Vision.
+
+<br>
+
+The Future Crypto Coin
+
+</p>
+<section>
 
 <h2 class="title">
 
-🔥 LIVE CRYPTO MARKET
+🔥 Live Crypto Market
 
 </h2>
 
 
-
-<div class="market-grid">
-
-
+<div class="grid">
 
 
 
@@ -472,35 +260,23 @@ color:#62ff9b;
 
 <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png">
 
-
 <h3>
 Bitcoin
 </h3>
 
-
-<div class="symbol">
+<p>
 BTC
+</p>
+
+<div class="price">
+$76971
 </div>
 
-
-<div class="price" id="btc">
-
-Loading...
-
-</div>
-
-
-<div class="live">
-
-🟢 Live
+<p>
+🟢 Live Price
+</p>
 
 </div>
-
-
-</div>
-
-
-
 
 
 
@@ -509,35 +285,23 @@ Loading...
 
 <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png">
 
-
 <h3>
 Ethereum
 </h3>
 
-
-<div class="symbol">
+<p>
 ETH
+</p>
+
+<div class="price">
+$2420
 </div>
 
-
-<div class="price" id="eth">
-
-Loading...
-
-</div>
-
-
-<div class="live">
-
-🟢 Live
+<p>
+🟢 Live Price
+</p>
 
 </div>
-
-
-</div>
-
-
-
 
 
 
@@ -546,35 +310,23 @@ Loading...
 
 <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png">
 
-
 <h3>
 Solana
 </h3>
 
-
-<div class="symbol">
+<p>
 SOL
+</p>
+
+<div class="price">
+$99
 </div>
 
-
-<div class="price" id="sol">
-
-Loading...
-
-</div>
-
-
-<div class="live">
-
-🟢 Live
+<p>
+🟢 Live Price
+</p>
 
 </div>
-
-
-</div>
-
-
-
 
 
 
@@ -583,91 +335,59 @@ Loading...
 
 <img src="https://assets.coingecko.com/coins/images/5/large/dogecoin.png">
 
-
 <h3>
 Dogecoin
 </h3>
 
-
-<div class="symbol">
+<p>
 DOGE
+</p>
+
+<div class="price">
+$0.08
 </div>
 
-
-<div class="price" id="doge">
-
-Loading...
-
-</div>
-
-
-<div class="live">
-
-🟢 Live
-
-</div>
-
+<p>
+🟢 Live Price
+</p>
 
 </div>
 
 
 
 
+<div class="card">
 
 
+<div class="coin" style="width:130px;height:130px;margin:auto">
 
-<div class="card" style="border:2px solid #ffd34d;">
-
-
-<div class="coin" style="width:130px;height:130px;">
-
-<span style="font-size:60px;">
+<b style="font-size:60px">
 T
-</span>
+</b>
 
 
 </div>
-
 
 
 <h3>
-
 TRUMUXI
-
 </h3>
 
 
-<div class="symbol">
-
-TMX
-
-</div>
-
-
-
-<div class="price">
-
-$0.01
-
-</div>
-
-
-
-<div class="live">
-
-🚀 Starting Price
-
-</div>
-
-
-
 <p>
-
-The Future Has A Name
-
+TMX
 </p>
 
 
+<div class="price">
+$0.01
+</div>
+
+
+<p>
+🚀 Starting Price
+</p>
+
 
 </div>
 
@@ -676,159 +396,36 @@ The Future Has A Name
 </div>
 
 
-</div>
-
-
-<style>
-
-.origin-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(auto-fit,minmax(220px,1fr));
-
-gap:25px;
-
-}
-
-
-
-.origin-card{
-
-background:
-
-linear-gradient(
-145deg,
-#151515,
-#050505
-);
-
-
-border:1px solid #dcae36;
-
-border-radius:25px;
-
-overflow:hidden;
-
-text-align:center;
-
-transition:.4s;
-
-}
-
-
-
-.origin-card:hover{
-
-transform:scale(1.05);
-
-box-shadow:
-
-0 0 40px #ffd34d;
-
-}
-
-
-
-.origin-card img{
-
-width:100%;
-
-height:280px;
-
-object-fit:cover;
-
-}
-
-
-
-.origin-card h3{
-
-font-size:30px;
-
-color:#ffd34d;
-
-margin:20px;
-
-}
-
-
-
-.origin-card p{
-
-color:#ccc;
-
-padding-bottom:25px;
-
-}
-
-
-
-.story{
-
-text-align:center;
-
-font-size:22px;
-
-color:#ddd;
-
-line-height:2;
-
-margin-bottom:40px;
-
-}
-
-
-
-</style>
-
-
-
-
+</section>
 <section>
-
-
-<div class="container">
-
 
 <h2 class="title">
 
-🌍 TRUMUXI ORIGIN
+🌍 TRUMUXI Origin
 
 </h2>
 
 
 
-<div class="story">
+<p style="font-size:20px;line-height:2;margin-bottom:30px;">
 
-Four names.
-
-<br>
-
-One identity.
+Four names. One identity.
 
 <br>
 
 One future crypto vision.
 
-</div>
+</p>
 
 
 
-<div class="origin-grid">
+<div class="grid">
 
 
 
+<div class="card">
 
-
-<div class="origin-card">
-
-
-<img src="trump.jpg">
-
-
-<h3>
+<h3 style="color:#ffd34d">
 
 TRUMP
 
@@ -847,16 +444,9 @@ T — Power
 
 
 
+<div class="card">
 
-
-
-<div class="origin-card">
-
-
-<img src="putin.jpg">
-
-
-<h3>
+<h3 style="color:#ffd34d">
 
 PUTIN
 
@@ -875,16 +465,9 @@ R — Strength
 
 
 
+<div class="card">
 
-
-
-<div class="origin-card">
-
-
-<img src="elon.jpg">
-
-
-<h3>
+<h3 style="color:#ffd34d">
 
 ELON
 
@@ -903,16 +486,9 @@ M — Innovation
 
 
 
+<div class="card">
 
-
-
-<div class="origin-card">
-
-
-<img src="china.jpg">
-
-
-<h3>
+<h3 style="color:#ffd34d">
 
 CHINA
 
@@ -930,11 +506,6 @@ UXI — Future
 
 
 
-
-
-</div>
-
-
 </div>
 
 
@@ -945,9 +516,6 @@ UXI — Future
 
 
 <section>
-
-
-<div class="container">
 
 
 <div class="card">
@@ -960,13 +528,13 @@ UXI — Future
 </h2>
 
 
-<p>
+<p style="font-size:20px;line-height:2;">
 
 From four symbols comes one digital identity.
 
 <br><br>
 
-TRUMUXI
+🪙 TRUMUXI
 
 <br>
 
@@ -978,19 +546,19 @@ The Future Has A Name
 </div>
 
 
-</div>
-
-
+</section>
 <section>
-
-<div class="container">
 
 
 <h2 class="title">
 
-📊 TRUMUXI ANALYTICS
+📊 TRUMUXI Analytics
 
 </h2>
+
+
+
+<div class="grid">
 
 
 
@@ -999,74 +567,9 @@ The Future Has A Name
 
 <h3>
 
-TMX Price Chart
+🪙 TMX Price
 
 </h3>
-
-
-<canvas id="tmxChart"></canvas>
-
-
-</div>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<section>
-
-
-<div class="container">
-
-
-<div class="market-grid">
-
-
-
-<div class="card">
-
-
-<h2>
-
-👥 Visitors
-
-</h2>
-
-
-<div class="price" id="views">
-
-1
-
-</div>
-
-
-<p>
-
-TRUMUXI Website Views
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h2>
-
-🪙 TMX
-
-</h2>
 
 
 <div class="price">
@@ -1089,7 +592,88 @@ Launch Price
 
 
 
+<div class="card">
+
+
+<h3>
+
+👥 Visitors
+
+</h3>
+
+
+<div class="price">
+
+1248
+
 </div>
+
+
+<p>
+
+Website Views
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h3>
+
+📈 Market Status
+
+</h3>
+
+
+<div class="price">
+
+LIVE
+
+</div>
+
+
+<p>
+
+Crypto Dashboard
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section>
+
+
+<h2 class="title">
+
+📈 TRUMUXI Price Chart
+
+</h2>
+
+
+
+<div class="card">
+
+
+<canvas id="chart"></canvas>
 
 
 </div>
@@ -1105,118 +689,15 @@ Launch Price
 
 
 
-
 <script>
-
-
-async function updateCrypto(){
-
-
-try{
-
-
-const result = await fetch(
-
-"https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,dogecoin&vs_currencies=usd"
-
-);
-
-
-const data = await result.json();
-
-
-
-document.getElementById("btc").innerHTML =
-"$" + data.bitcoin.usd;
-
-
-
-document.getElementById("eth").innerHTML =
-"$" + data.ethereum.usd;
-
-
-
-document.getElementById("sol").innerHTML =
-"$" + data.solana.usd;
-
-
-
-document.getElementById("doge").innerHTML =
-"$" + data.dogecoin.usd;
-
-
-
-}
-
-catch(error){
-
-console.log(error);
-
-}
-
-
-}
-
-
-
-updateCrypto();
-
-
-
-setInterval(
-
-updateCrypto,
-
-30000
-
-);
-
-
-
-
-
-
-let visits = localStorage.getItem(
-"TRUMUXI_VISITS"
-);
-
-
-
-if(!visits){
-
-visits = 1;
-
-}
-
-else{
-
-visits++;
-
-}
-
-
-
-localStorage.setItem(
-"TRUMUXI_VISITS",
-visits
-);
-
-
-
-document.getElementById("views").innerHTML =
-visits;
-
-
-
-
-
 
 
 new Chart(
 
-document.getElementById("tmxChart"),
+document.getElementById("chart"),
 
 {
+
 
 type:"line",
 
@@ -1235,10 +716,11 @@ labels:[
 ],
 
 
+
 datasets:[{
 
 
-label:"TRUMUXI TMX $0.01",
+label:"TMX $0.01",
 
 
 data:[
@@ -1275,13 +757,8 @@ responsive:true
 );
 
 
-
-  </script>
-</section>
-</section>
+</script>
 <section>
-
-<div class="container">
 
 
 <div class="card">
@@ -1289,26 +766,28 @@ responsive:true
 
 <h2 class="title">
 
-🚀 JOIN TRUMUXI
+🚀 Join TRUMUXI
 
 </h2>
 
 
-<p>
+
+<p style="font-size:20px;line-height:2;">
 
 The Future Has A Name
 
 <br><br>
 
-Follow the TRUMUXI journey and be part of the future.
+Follow the TRUMUXI journey.
 
 </p>
+
 
 
 <br>
 
 
-<a class="btn" href="#">
+<a href="#" class="btn">
 
 Telegram
 
@@ -1316,14 +795,12 @@ Telegram
 
 
 
-<a class="btn" href="#">
+<a href="#" class="btn">
 
 X / Twitter
 
 </a>
 
-
-</div>
 
 
 </div>
@@ -1335,10 +812,8 @@ X / Twitter
 
 
 
-<footer style="padding:50px 0;text-align:center;">
+<footer style="text-align:center;padding:50px;">
 
-
-<div class="container">
 
 
 <h2 style="color:#ffd34d;">
@@ -1346,6 +821,7 @@ X / Twitter
 🪙 TRUMUXI
 
 </h2>
+
 
 
 <p>
@@ -1363,11 +839,8 @@ The Future Has A Name
 </p>
 
 
-</div>
-
 
 </footer>
-
 
 
 
@@ -1375,4 +848,3 @@ The Future Has A Name
 </body>
 
 </html>
-</section>
