@@ -9,7 +9,6 @@
 
 <title>TRUMUXI | The Future Has A Name</title>
 
-
 <style>
 
 *{
@@ -30,8 +29,6 @@ color:white;
 overflow-x:hidden;
 
 }
-}
-
 
 nav{
 
@@ -50,8 +47,6 @@ display:flex;
 justify-content:space-between;
 
 }
-
-
 
 .coin{
 
@@ -77,14 +72,11 @@ align-items:center;
 
 justify-content:center;
 
-
 box-shadow:
 
 0 0 90px #ffd34d;
 
 }
-
-
 
 .coin b{
 
@@ -93,8 +85,6 @@ font-size:110px;
 color:#111;
 
 }
-
-
 
 h1{
 
@@ -108,8 +98,6 @@ text-shadow:0 0 30px #ffd34d;
 
 }
 
-
-
 .hero-text{
 
 text-align:center;
@@ -122,15 +110,11 @@ margin:20px;
 
 }
 
-
-
 section{
 
 padding:50px 5%;
 
 }
-
-
 
 .title{
 
@@ -141,8 +125,6 @@ color:#ffd34d;
 margin-bottom:30px;
 
 }
-
-
 
 .grid{
 
@@ -156,697 +138,414 @@ gap:20px;
 
 }
 
-
-
 .card{
 
-background:#111;
+background:
 
-border:1px solid #dcae36;
+linear-gradient(
+145deg,
+rgba(255,215,80,.18),
+rgba(0,0,0,.8)
+);
 
-border-radius:25px;
+border:1px solid #b88620;
+
+border-radius:20px;
 
 padding:25px;
 
 text-align:center;
 
-}
+box-shadow:0 0 20px rgba(255,190,40,.2);
 
-
-
-.card img{
-
-width:75px;
-
-height:75px;
+transition:.3s;
 
 }
 
+.card:hover{
 
+transform:translateY(-8px);
 
-.price{
+box-shadow:0 0 35px #dcae36;
 
-font-size:30px;
+}
 
-font-weight:bold;
+.card h3{
 
 color:#ffd34d;
 
-margin:15px;
+font-size:24px;
+
+margin-bottom:12px;
 
 }
 
+.card p{
 
+font-size:16px;
 
-</style>
+line-height:1.8;
 
+}
 
-</head>
+.crypto-card{
 
+cursor:pointer;
+
+}
+
+.crypto-card img{
+
+width:70px;
+
+height:70px;
+
+margin-bottom:15px;
+
+}
+
+.price{
+  </head>
 
 <body>
 
-
 <nav>
-
-<div>
-🪙 TRUMUXI
-</div>
-
-<div>
-TMX
-</div>
-
+<span>TRUMUXI</span>
+<span>TRMX</span>
 </nav>
 
-
-
 <div class="coin">
-
 <b>T</b>
-
 </div>
 
-
-
-<h1>
-
-TRUMUXI
-
-</h1>
-
-
+<h1>TRUMUXI</h1>
 
 <p class="hero-text">
-
-Four Names. One Vision.
-
+The Future Has A Name 🚀
 <br>
-
-The Future Crypto Coin
-
+A New Generation Of Digital Currency
 </p>
+
 <section>
 
-<h2 class="title">
-
-🔥 Live Crypto Market
-
-</h2>
-
-
-<div class="grid">
-
-
+<h2 class="title">🔥 About TRUMUXI</h2>
 
 <div class="card">
 
+<h3>Our Vision</h3>
+
+<p>
+TRUMUXI is a digital currency project
+focused on innovation, technology
+and the future of blockchain.
+</p>
+
+<p>
+Our mission is to build a global
+crypto community.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="title">🌍 TRUMUXI Concept</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>🇺🇸 TRUMP</h3>
+<p>Leadership & Vision</p>
+</div>
+
+<div class="card">
+<h3>🇷🇺 PUTIN</h3>
+<p>Strength & Strategy</p>
+</div>
+
+<div class="card">
+<h3>🚀 ELON MUSK</h3>
+<p>Innovation & Technology</p>
+</div>
+
+<div class="card">
+<h3>🇨🇳 CHINA</h3>
+<p>Future & Development</p>
+</div>
+
+</div>
+
+</section><section>
+
+<h2 class="title">💰 Top Cryptocurrencies</h2>
+
+<div class="grid">
+
+<div class="card crypto-card" onclick="showChart('bitcoin')">
 <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png">
-
-<h3>
-Bitcoin
-</h3>
-
-<p>
-BTC
-</p>
-
-<div class="price">
-$76971
+<h3>Bitcoin</h3>
+<p>BTC</p>
+<div class="price" id="bitcoin-price">Loading...</div>
 </div>
 
-<p>
-🟢 Live Price
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
+<div class="card crypto-card" onclick="showChart('ethereum')">
 <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png">
-
-<h3>
-Ethereum
-</h3>
-
-<p>
-ETH
-</p>
-
-<div class="price">
-$2420
+<h3>Ethereum</h3>
+<p>ETH</p>
+<div class="price" id="ethereum-price">Loading...</div>
 </div>
 
-<p>
-🟢 Live Price
-</p>
-
+<div class="card crypto-card" onclick="showChart('tether')">
+<img src="https://assets.coingecko.com/coins/images/325/large/Tether.png">
+<h3>Tether</h3>
+<p>USDT</p>
+<div class="price" id="tether-price">Loading...</div>
 </div>
 
+<div class="card crypto-card" onclick="showChart('binancecoin')">
+<img src="https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png">
+<h3>BNB</h3>
+<p>BNB</p>
+<div class="price" id="binancecoin-price">Loading...</div>
+</div>
 
-
-
-<div class="card">
-
+<div class="card crypto-card" onclick="showChart('solana')">
 <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png">
-
-<h3>
-Solana
-</h3>
-
-<p>
-SOL
-</p>
-
-<div class="price">
-$99
+<h3>Solana</h3>
+<p>SOL</p>
+<div class="price" id="solana-price">Loading...</div>
 </div>
-
-<p>
-🟢 Live Price
-</p>
 
 </div>
 
+</section><section>
 
+<h2 class="title">🌟 More Top Cryptocurrencies</h2>
 
+<div class="grid">
 
-<div class="card">
+<div class="card crypto-card" onclick="showChart('usd-coin')">
+<img src="https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png">
+<h3>USD Coin</h3>
+<p>USDC</p>
+<div class="price" id="usd-coin-price">Loading...</div>
+</div>
 
+<div class="card crypto-card" onclick="showChart('xrp')">
+<img src="https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png">
+<h3>XRP</h3>
+<p>XRP</p>
+<div class="price" id="xrp-price">Loading...</div>
+</div>
+
+<div class="card crypto-card" onclick="showChart('dogecoin')">
 <img src="https://assets.coingecko.com/coins/images/5/large/dogecoin.png">
-
-<h3>
-Dogecoin
-</h3>
-
-<p>
-DOGE
-</p>
-
-<div class="price">
-$0.08
+<h3>Dogecoin</h3>
+<p>DOGE</p>
+<div class="price" id="dogecoin-price">Loading...</div>
 </div>
 
-<p>
-🟢 Live Price
-</p>
+<div class="card crypto-card" onclick="showChart('cardano')">
+<img src="https://assets.coingecko.com/coins/images/975/large/cardano.png">
+<h3>Cardano</h3>
+<p>ADA</p>
+<div class="price" id="cardano-price">Loading...</div>
+</div>
+
+<div class="card crypto-card" onclick="showChart('avalanche-2')">
+<img src="https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png">
+<h3>Avalanche</h3>
+<p>AVAX</p>
+<div class="price" id="avalanche-2-price">Loading...</div>
+</div>
 
 </div>
 
+</section><section>
 
-
+<h2 class="title">📊 Live Crypto Chart</h2>
 
 <div class="card">
 
+<h3 id="chartTitle">Select a Cryptocurrency</h3>
 
-<div class="coin" style="width:130px;height:130px;margin:auto">
+<canvas id="marketChart"></canvas>
 
-<b style="font-size:60px">
-T
-</b>
-
-
-</div>
-
-
-<h3>
-TRUMUXI
-</h3>
-
-
-<p>
-TMX
+<p id="chartStatus">
+Click on any coin to view its 7-day chart.
 </p>
 
-
-<div class="price">
-$0.01
 </div>
-
-
-<p>
-🚀 Starting Price
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-<section>
-
-<h2 class="title">
-
-🌍 TRUMUXI Origin
-
-</h2>
-
-
-
-<p style="font-size:20px;line-height:2;margin-bottom:30px;">
-
-Four names. One identity.
-
-<br>
-
-One future crypto vision.
-
-</p>
-
-
-
-<div class="grid">
-
-
-
-<div class="card">
-
-<h3 style="color:#ffd34d">
-
-TRUMP
-
-</h3>
-
-
-<p>
-
-T — Power
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3 style="color:#ffd34d">
-
-PUTIN
-
-</h3>
-
-
-<p>
-
-R — Strength
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3 style="color:#ffd34d">
-
-ELON
-
-</h3>
-
-
-<p>
-
-M — Innovation
-
-</p>
-
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3 style="color:#ffd34d">
-
-CHINA
-
-</h3>
-
-
-<p>
-
-UXI — Future
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
 
 </section>
 
+color:#fff19a;
 
+font-size:22px;
 
+font-weight:bold;
 
+margin:12px;
 
-<section>
+}
 
-
-<div class="card">
-
-
-<h2 class="title">
-
-✨ TRUMUXI VISION
-
-</h2>
-
-
-<p style="font-size:20px;line-height:2;">
-
-From four symbols comes one digital identity.
-
-<br><br>
-
-🪙 TRUMUXI
-
-<br>
-
-The Future Has A Name
-
-</p>
-
-
-</div>
-
-
-</section>
-<section>
-
-
-<h2 class="title">
-
-📊 TRUMUXI Analytics
-
-</h2>
-
-
-
-<div class="grid">
-
-
-
-<div class="card">
-
-
-<h3>
-
-🪙 TMX Price
-
-</h3>
-
-
-<div class="price">
-
-$0.01
-
-</div>
-
-
-<p>
-
-Launch Price
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-
-👥 Visitors
-
-</h3>
-
-
-<div class="price">
-
-1248
-
-</div>
-
-
-<p>
-
-Website Views
-
-</p>
-
-
-</div>
-
-
-
-
-
-<div class="card">
-
-
-<h3>
-
-📈 Market Status
-
-</h3>
-
-
-<div class="price">
-
-LIVE
-
-</div>
-
-
-<p>
-
-Crypto Dashboard
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<section>
-
-
-<h2 class="title">
-
-📈 TRUMUXI Price Chart
-
-</h2>
-
-
-
-<div class="card">
-
-
-<canvas id="chart"></canvas>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-
+  </style><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
+const coins = [
+"bitcoin",
+"ethereum",
+"tether",
+"binancecoin",
+"solana",
+"usd-coin",
+"xrp",
+"dogecoin",
+"cardano",
+"avalanche-2"
+];
 
-new Chart(
+async function loadPrices(){
 
-document.getElementById("chart"),
+try{
 
-{
+const response = await fetch(
+"https://api.coingecko.com/api/v3/simple/price?ids="
++ coins.join(",")
++ "&vs_currencies=usd"
+);
 
+const data = await response.json();
+
+coins.forEach(coin => {
+
+const element =
+document.getElementById(coin + "-price");
+
+if(element && data[coin]){
+
+element.textContent =
+"$" + data[coin].usd;
+
+}
+
+});
+
+}catch(error){
+
+console.log("Price error:",error);
+
+}
+
+}
+
+let chart;
+
+async function showChart(coin){
+
+const title =
+document.getElementById("chartTitle");
+
+const status =
+document.getElementById("chartStatus");
+
+title.textContent =
+coin.toUpperCase() + " - 7 Day Chart";
+
+status.textContent = "Loading chart...";
+
+try{
+
+const response = await fetch(
+"https://api.coingecko.com/api/v3/coins/"
++ coin
++ "/market_chart?vs_currency=usd&days=7"
+);
+
+const data = await response.json();
+
+const prices = data.prices;
+
+const labels = prices.map(item =>
+new Date(item[0]).toLocaleDateString()
+);
+
+const values = prices.map(item => item[1]);
+
+if(chart){
+
+chart.destroy();
+
+}
+
+const ctx =
+document.getElementById("marketChart")
+.getContext("2d");
+
+chart = new Chart(ctx,{
 
 type:"line",
 
-
 data:{
 
-
-labels:[
-
-"Start",
-"1H",
-"2H",
-"3H",
-"4H"
-
-],
-
-
+labels:labels,
 
 datasets:[{
 
+label:coin.toUpperCase(),
 
-label:"TMX $0.01",
+data:values,
 
+borderWidth:2,
 
-data:[
+fill:false,
 
-0.009,
-0.010,
-0.011,
-0.010,
-0.012
-
-],
-
-
-borderWidth:4
-
+tension:0.3
 
 }]
 
-
 },
-
 
 options:{
 
+responsive:true,
 
-responsive:true
+plugins:{
 
+legend:{
+
+display:true
 
 }
 
+}
 
 }
 
-);
+});
 
+status.textContent =
+"Chart updated successfully.";
+
+}catch(error){
+
+status.textContent =
+"Unable to load chart.";
+
+console.log(error);
+
+}
+
+}
+
+loadPrices();
+
+setInterval(loadPrices,30000);
 
 </script>
-<section>
-
-
-<div class="card">
-
-
-<h2 class="title">
-
-🚀 Join TRUMUXI
-
-</h2>
-
-
-
-<p style="font-size:20px;line-height:2;">
-
-The Future Has A Name
-
-<br><br>
-
-Follow the TRUMUXI journey.
-
-</p>
-
-
-
-<br>
-
-
-<a href="#" class="btn">
-
-Telegram
-
-</a>
-
-
-
-<a href="#" class="btn">
-
-X / Twitter
-
-</a>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-<footer style="text-align:center;padding:50px;">
-
-
-
-<h2 style="color:#ffd34d;">
-
-🪙 TRUMUXI
-
-</h2>
-
-
-
-<p>
-
-TMX Crypto Concept
-
-<br><br>
-
-© 2026 TRUMUXI
-
-<br>
-
-The Future Has A Name
-
-</p>
-
-
-
-</footer>
-
-
-
 
 </body>
 
