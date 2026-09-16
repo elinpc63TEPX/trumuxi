@@ -365,7 +365,311 @@ function openChart(name){
       border-radius:5px 5px 0 0;
       box-shadow:0 0 8px rgba(255,211,77,.18);
     `;
+<!-- ============================= -->
+<!-- TRUMUXI DAILY VISITORS + COINS -->
+<!-- ============================= -->
 
+<section id="crypto-section">
+
+<h2>🔥 TRUMUXI CRYPTO MARKET</h2>
+
+<div class="visitor-box">
+    <div class="visitor-title">👁️ DAILY VISITORS</div>
+    <div class="visitor-number" id="dailyVisitors">0</div>
+    <div class="visitor-total">
+        Total Visitors: <span id="totalVisitors">0</span>
+    </div>
+</div>
+
+<div class="crypto-grid">
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
+        <h3>Bitcoin</h3>
+        <p>BTC</p>
+        <strong>$<span id="btcPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
+        <h3>Ethereum</h3>
+        <p>ETH</p>
+        <strong>$<span id="ethPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether">
+        <h3>Tether</h3>
+        <p>USDT</p>
+        <strong>$<span id="usdtPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB">
+        <h3>BNB</h3>
+        <p>BNB</p>
+        <strong>$<span id="bnbPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">
+        <h3>Solana</h3>
+        <p>SOL</p>
+        <strong>$<span id="solPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP">
+        <h3>XRP</h3>
+        <p>XRP</p>
+        <strong>$<span id="xrpPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">
+        <h3>Dogecoin</h3>
+        <p>DOGE</p>
+        <strong>$<span id="dogePrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano">
+        <h3>Cardano</h3>
+        <p>ADA</p>
+        <strong>$<span id="adaPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card">
+        <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche">
+        <h3>Avalanche</h3>
+        <p>AVAX</p>
+        <strong>$<span id="avaxPrice">--</span></strong>
+    </div>
+
+    <div class="crypto-card trmx-card">
+        <div class="trmx-logo">T</div>
+        <h3>TRUMUXI</h3>
+        <p>TRMX</p>
+        <strong>$0.01</strong>
+    </div>
+
+</div>
+
+</section>
+
+<style>
+
+#crypto-section{
+    padding:60px 20px;
+    text-align:center;
+    background:
+    radial-gradient(circle at top,#4d3500 0%,#090909 45%,#000 100%);
+}
+
+#crypto-section h2{
+    color:#ffd34d;
+    font-size:32px;
+    margin-bottom:35px;
+    text-shadow:0 0 20px #ffd34d;
+}
+
+.visitor-box{
+    max-width:420px;
+    margin:0 auto 40px;
+    padding:25px;
+    border:1px solid #dcae36;
+    border-radius:20px;
+    background:rgba(255,193,7,.08);
+    box-shadow:0 0 30px rgba(255,211,77,.2);
+}
+
+.visitor-title{
+    color:#ffd34d;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.visitor-number{
+    font-size:50px;
+    font-weight:bold;
+    color:white;
+    margin:10px 0;
+}
+
+.visitor-total{
+    color:#aaa;
+}
+
+.crypto-grid{
+    max-width:1200px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.crypto-card{
+    padding:25px 15px;
+    border:1px solid #9c771d;
+    border-radius:20px;
+    background:linear-gradient(145deg,#171717,#050505);
+    transition:.3s;
+}
+
+.crypto-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 30px rgba(255,211,77,.35);
+    border-color:#ffd34d;
+}
+
+.crypto-card img{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    margin-bottom:12px;
+}
+
+.crypto-card h3{
+    color:white;
+    margin:5px;
+}
+
+.crypto-card p{
+    color:#999;
+    margin:5px;
+}
+
+.crypto-card strong{
+    display:block;
+    margin-top:12px;
+    color:#ffd34d;
+    font-size:20px;
+}
+
+.trmx-card{
+    border:2px solid #ffd34d;
+    box-shadow:0 0 25px rgba(255,211,77,.25);
+}
+
+.trmx-logo{
+    width:75px;
+    height:75px;
+    margin:0 auto 12px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:45px;
+    font-weight:bold;
+    color:#fff;
+    background:linear-gradient(145deg,#fff19a,#c88900);
+    box-shadow:0 0 35px #ffd34d;
+}
+
+@media(max-width:600px){
+
+    #crypto-section{
+        padding:40px 12px;
+    }
+
+    #crypto-section h2{
+        font-size:25px;
+    }
+
+    .crypto-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
+    }
+
+    .crypto-card{
+        padding:18px 8px;
+    }
+
+    .crypto-card img,
+    .trmx-logo{
+        width:60px;
+        height:60px;
+    }
+
+}
+
+</style>
+
+<script>
+
+let today = new Date().toISOString().slice(0,10);
+
+let savedDate = localStorage.getItem("trmx_visit_date");
+let daily = parseInt(localStorage.getItem("trmx_daily_visitors") || "0");
+let total = parseInt(localStorage.getItem("trmx_total_visitors") || "0");
+
+if(savedDate !== today){
+    daily = 0;
+    localStorage.setItem("trmx_visit_date",today);
+}
+
+daily++;
+total++;
+
+localStorage.setItem("trmx_daily_visitors",daily);
+localStorage.setItem("trmx_total_visitors",total);
+
+document.getElementById("dailyVisitors").textContent = daily;
+document.getElementById("totalVisitors").textContent = total;
+
+
+/* CRYPTO PRICES */
+
+async function loadCryptoPrices(){
+
+    try{
+
+        const response = await fetch(
+        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,binancecoin,solana,ripple,dogecoin,cardano,avalanche-2&vs_currencies=usd"
+        );
+
+        const data = await response.json();
+
+        document.getElementById("btcPrice").textContent =
+        data.bitcoin.usd;
+
+        document.getElementById("ethPrice").textContent =
+        data.ethereum.usd;
+
+        document.getElementById("usdtPrice").textContent =
+        data.tether.usd;
+
+        document.getElementById("bnbPrice").textContent =
+        data.binancecoin.usd;
+
+        document.getElementById("solPrice").textContent =
+        data.solana.usd;
+
+        document.getElementById("xrpPrice").textContent =
+        data.ripple.usd;
+
+        document.getElementById("dogePrice").textContent =
+        data.dogecoin.usd;
+
+        document.getElementById("adaPrice").textContent =
+        data.cardano.usd;
+
+        document.getElementById("avaxPrice").textContent =
+        data["avalanche-2"].usd;
+
+    }catch(error){
+
+        console.log("Price loading error:",error);
+
+    }
+
+}
+
+loadCryptoPrices();
+
+setInterval(loadCryptoPrices,30000);
+
+</script>
     bars.appendChild(bar);
   }
 
