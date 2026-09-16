@@ -1,552 +1,409 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- TRUMUXI LIVE COINS - PART 1 -->
 
-<head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>TRUMUXI | The Future Has A Name</title>
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial,sans-serif;
-}
-
-body{
-
-background:
-radial-gradient(circle at top,#6b4700 0%,#050505 55%),
-linear-gradient(120deg,#000,#1a1200);
-
+<section id="live-coins" style="
+padding:50px 15px;
+background:linear-gradient(180deg,#080808,#151005);
 color:white;
-
-overflow-x:hidden;
-
-}
-
-nav{
-
-padding:20px;
-
-border-bottom:1px solid #dcae36;
-
-color:#ffd34d;
-
-font-size:25px;
-
-font-weight:bold;
-
-display:flex;
-
-justify-content:space-between;
-
-}
-
-.coin{
-
-margin:100px auto 30px;
-
-width:230px;
-
-height:230px;
-
-border-radius:50%;
-
-background:
-
-linear-gradient(
-145deg,
-#fff19a,
-#c88900
-);
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-box-shadow:
-
-0 0 90px #ffd34d;
-
-}
-
-.coin b{
-
-font-size:110px;
-
-color:#111;
-
-}
-
-h1{
-
 text-align:center;
+">
 
-font-size:75px;
-
+<h2 style="
+font-size:34px;
 color:#ffd34d;
+margin-bottom:10px;
+">
+🔥 TOP 10 CRYPTO
+</h2>
 
-text-shadow:0 0 30px #ffd34d;
-
-}
-
-.hero-text{
-
-text-align:center;
-
-font-size:22px;
-
-line-height:2;
-
-margin:20px;
-
-}
-
-section{
-
-padding:50px 5%;
-
-}
-
-.title{
-
-font-size:38px;
-
-color:#ffd34d;
-
+<p style="
+color:#aaa;
 margin-bottom:30px;
+">
+Live Crypto Market
+</p>
 
-}
-
-.grid{
-
+<div id="coin-list" style="
 display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+max-width:1100px;
+margin:auto;
+">
 
-grid-template-columns:
+</div>
 
-repeat(auto-fit,minmax(220px,1fr));
+</section><script>
+const coins = [
+  {name:"Bitcoin", symbol:"BTC", color:"#f7931a"},
+  {name:"Ethereum", symbol:"ETH", color:"#627eea"},
+  {name:"Tether", symbol:"USDT", color:"#26a17b"},
+  {name:"BNB", symbol:"BNB", color:"#f3ba2f"},
+  {name:"Solana", symbol:"SOL", color:"#9945ff"},
+  {name:"XRP", symbol:"XRP", color:"#ffffff"},
+  {name:"Dogecoin", symbol:"DOGE", color:"#c2a633"},
+  {name:"Cardano", symbol:"ADA", color:"#0033ad"},
+  {name:"TRUMUXI", symbol:"TRMX", color:"#ffd34d"},
+  {name:"Polkadot", symbol:"DOT", color:"#e6007a"}
+];
 
-gap:20px;
+const coinList = document.getElementById("coin-list");
 
+coins.forEach((coin, index) => {
+
+  const card = document.createElement("div");
+
+  card.style.cssText = `
+    background:linear-gradient(145deg,#171717,#080808);
+    border:1px solid #3a2b0c;
+    border-radius:18px;
+    padding:22px 15px;
+    box-shadow:0 0 20px rgba(255,211,77,.08);
+    cursor:pointer;
+    transition:.3s;
+  `;
+
+  card.innerHTML = `
+    <div style="
+      width:60px;
+      height:60px;
+      border-radius:50%;
+      margin:auto auto 12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:${coin.color};
+      color:#000;
+      font-weight:bold;
+      font-size:17px;
+    ">
+      ${coin.symbol.substring(0,3)}
+    </div>
+
+    <h3 style="margin-bottom:8px;">
+      ${coin.name}
+    </h3>
+
+    <div style="
+      color:#ffd34d;
+      font-size:20px;
+      font-weight:bold;
+    ">
+      $<span id="price-${index}">0.00</span>
+    </div>
+
+    <div style="
+      margin-top:8px;
+      color:#888;
+      font-size:13px;
+    ">
+      Click for chart
+    </div>
+  `;
+
+  card.onclick = () => {
+    alert(coin.name + " (" + coin.symbol + ") chart will open here.");
+  };
+
+  card.onmouseenter = () => {
+    card.style.transform = "translateY(-6px)";
+    card.style.boxShadow = "0 0 30px rgba(255,211,77,.25)";
+  };
+
+  card.onmouseleave = () => {
+    card.style.transform = "translateY(0)";
+    card.style.boxShadow = "0 0 20px rgba(255,211,77,.08)";
+  };
+
+  coinList.appendChild(card);
+});
+</script><script>
+const coinIds = [
+  "bitcoin",
+  "ethereum",
+  "tether",
+  "binancecoin",
+  "solana",
+  "ripple",
+  "dogecoin",
+  "cardano",
+  "trumuxi",
+  "polkadot"
+];
+
+async function updatePrices() {
+
+  try {
+
+    const url =
+      "https://api.coingecko.com/api/v3/simple/price" +
+      "?ids=" + coinIds.join(",") +
+      "&vs_currencies=usd";
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    coinIds.forEach((id, index) => {
+
+      const priceBox =
+        document.getElementById("price-" + index);
+
+      if (!priceBox) return;
+
+      if (data[id] && data[id].usd !== undefined) {
+
+        let price = data[id].usd;
+
+        if (price < 1) {
+          price = price.toFixed(6);
+        } else {
+          price = price.toLocaleString(
+            "en-US",
+            {
+              maximumFractionDigits: 2
+            }
+          );
+        }
+
+        priceBox.textContent = price;
+
+      } else {
+
+        priceBox.textContent = "N/A";
+
+      }
+
+    });
+
+  } catch (error) {
+
+    console.log("Price update error:", error);
+
+  }
 }
 
-.card{
+updatePrices();
 
-background:
-
-linear-gradient(
-145deg,
-rgba(255,215,80,.18),
-rgba(0,0,0,.8)
+setInterval(
+  updatePrices,
+  30000
 );
+</script><style>
 
-border:1px solid #b88620;
+#live-coins{
+  position:relative;
+  overflow:hidden;
+}
 
-border-radius:20px;
+#live-coins::before{
+  content:"";
+  position:absolute;
+  width:350px;
+  height:350px;
+  background:rgba(255,211,77,.08);
+  border-radius:50%;
+  filter:blur(80px);
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  pointer-events:none;
+}
 
-padding:25px;
+#coin-list{
+  position:relative;
+  z-index:2;
+}
 
-text-align:center;
+#coin-list > div{
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
-box-shadow:0 0 20px rgba(255,190,40,.2);
+#coin-list > div::after{
+  content:"LIVE";
+  display:inline-block;
+  margin:12px auto 0;
+  padding:4px 10px;
+  border:1px solid #4d3b13;
+  border-radius:20px;
+  color:#ffd34d;
+  font-size:10px;
+  letter-spacing:2px;
+}
 
-transition:.3s;
+@media(max-width:600px){
+
+  #live-coins{
+    padding:40px 10px !important;
+  }
+
+  #live-coins h2{
+    font-size:28px !important;
+  }
+
+  #coin-list{
+    grid-template-columns:repeat(2,1fr) !important;
+    gap:10px !important;
+  }
+
+  #coin-list > div{
+    padding:15px 8px !important;
+    min-height:175px;
+  }
+
+  #coin-list h3{
+    font-size:15px;
+  }
 
 }
 
-.card:hover{
+</style><!-- TRUMUXI COIN CHART MODAL -->
 
-transform:translateY(-8px);
+<div id="chartModal" style="
+display:none;
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.88);
+z-index:99999;
+padding:20px;
+align-items:center;
+justify-content:center;
+">
 
-box-shadow:0 0 35px #dcae36;
+  <div style="
+  width:100%;
+  max-width:800px;
+  background:#0b0b0b;
+  border:1px solid #66501c;
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 0 50px rgba(255,211,77,.15);
+  position:relative;
+  ">
 
-}
+    <button onclick="closeChart()" style="
+    position:absolute;
+    right:12px;
+    top:10px;
+    width:35px;
+    height:35px;
+    border:0;
+    border-radius:50%;
+    background:#222;
+    color:#ffd34d;
+    font-size:20px;
+    cursor:pointer;
+    ">×</button>
 
-.card h3{
+    <h2 id="chartTitle" style="
+    color:#ffd34d;
+    text-align:center;
+    margin:10px 0 20px;
+    ">
+    Crypto Chart
+    </h2>
 
-color:#ffd34d;
+    <div style="
+    height:300px;
+    display:flex;
+    align-items:flex-end;
+    gap:7px;
+    padding:20px;
+    border:1px solid #292929;
+    border-radius:15px;
+    background:linear-gradient(180deg,#151515,#080808);
+    " id="chartBars">
+    </div>
 
-font-size:24px;
+    <p style="
+    text-align:center;
+    color:#888;
+    margin-top:15px;
+    font-size:13px;
+    ">
+    TRUMUXI LIVE MARKET
+    </p>
 
-margin-bottom:12px;
-
-}
-
-.card p{
-
-font-size:16px;
-
-line-height:1.8;
-
-}
-
-.crypto-card{
-
-cursor:pointer;
-
-}
-
-.crypto-card img{
-
-width:70px;
-
-height:70px;
-
-margin-bottom:15px;
-
-}
-
-.price{
-  </head>
-
-<body>
-
-<nav>
-<span>TRUMUXI</span>
-<span>TRMX</span>
-</nav>
-
-<div class="coin">
-<b>T</b>
+  </div>
 </div>
-
-<h1>TRUMUXI</h1>
-
-<p class="hero-text">
-The Future Has A Name 🚀
-<br>
-A New Generation Of Digital Currency
-</p>
-
-<section>
-
-<h2 class="title">🔥 About TRUMUXI</h2>
-
-<div class="card">
-
-<h3>Our Vision</h3>
-
-<p>
-TRUMUXI is a digital currency project
-focused on innovation, technology
-and the future of blockchain.
-</p>
-
-<p>
-Our mission is to build a global
-crypto community.
-</p>
-
-</div>
-
-</section>
-
-<section>
-
-<h2 class="title">🌍 TRUMUXI Concept</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>🇺🇸 TRUMP</h3>
-<p>Leadership & Vision</p>
-</div>
-
-<div class="card">
-<h3>🇷🇺 PUTIN</h3>
-<p>Strength & Strategy</p>
-</div>
-
-<div class="card">
-<h3>🚀 ELON MUSK</h3>
-<p>Innovation & Technology</p>
-</div>
-
-<div class="card">
-<h3>🇨🇳 CHINA</h3>
-<p>Future & Development</p>
-</div>
-
-</div>
-
-</section><section>
-
-<h2 class="title">💰 Top Cryptocurrencies</h2>
-
-<div class="grid">
-
-<div class="card crypto-card" onclick="showChart('bitcoin')">
-<img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png">
-<h3>Bitcoin</h3>
-<p>BTC</p>
-<div class="price" id="bitcoin-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('ethereum')">
-<img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png">
-<h3>Ethereum</h3>
-<p>ETH</p>
-<div class="price" id="ethereum-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('tether')">
-<img src="https://assets.coingecko.com/coins/images/325/large/Tether.png">
-<h3>Tether</h3>
-<p>USDT</p>
-<div class="price" id="tether-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('binancecoin')">
-<img src="https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png">
-<h3>BNB</h3>
-<p>BNB</p>
-<div class="price" id="binancecoin-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('solana')">
-<img src="https://assets.coingecko.com/coins/images/4128/large/solana.png">
-<h3>Solana</h3>
-<p>SOL</p>
-<div class="price" id="solana-price">Loading...</div>
-</div>
-
-</div>
-
-</section><section>
-
-<h2 class="title">🌟 More Top Cryptocurrencies</h2>
-
-<div class="grid">
-
-<div class="card crypto-card" onclick="showChart('usd-coin')">
-<img src="https://assets.coingecko.com/coins/images/6319/large/USD_Coin_icon.png">
-<h3>USD Coin</h3>
-<p>USDC</p>
-<div class="price" id="usd-coin-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('xrp')">
-<img src="https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png">
-<h3>XRP</h3>
-<p>XRP</p>
-<div class="price" id="xrp-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('dogecoin')">
-<img src="https://assets.coingecko.com/coins/images/5/large/dogecoin.png">
-<h3>Dogecoin</h3>
-<p>DOGE</p>
-<div class="price" id="dogecoin-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('cardano')">
-<img src="https://assets.coingecko.com/coins/images/975/large/cardano.png">
-<h3>Cardano</h3>
-<p>ADA</p>
-<div class="price" id="cardano-price">Loading...</div>
-</div>
-
-<div class="card crypto-card" onclick="showChart('avalanche-2')">
-<img src="https://assets.coingecko.com/coins/images/12559/large/Avalanche_Circle_RedWhite_Trans.png">
-<h3>Avalanche</h3>
-<p>AVAX</p>
-<div class="price" id="avalanche-2-price">Loading...</div>
-</div>
-
-</div>
-
-</section><section>
-
-<h2 class="title">📊 Live Crypto Chart</h2>
-
-<div class="card">
-
-<h3 id="chartTitle">Select a Cryptocurrency</h3>
-
-<canvas id="marketChart"></canvas>
-
-<p id="chartStatus">
-Click on any coin to view its 7-day chart.
-</p>
-
-</div>
-
-</section>
-
-color:#fff19a;
-
-font-size:22px;
-
-font-weight:bold;
-
-margin:12px;
-
-}
-
-  </style><script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
 
-const coins = [
-"bitcoin",
-"ethereum",
-"tether",
-"binancecoin",
-"solana",
-"usd-coin",
-"xrp",
-"dogecoin",
-"cardano",
-"avalanche-2"
-];
+function openChart(name){
 
-async function loadPrices(){
+  const modal =
+    document.getElementById("chartModal");
 
-try{
+  const title =
+    document.getElementById("chartTitle");
 
-const response = await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids="
-+ coins.join(",")
-+ "&vs_currencies=usd"
-);
+  const bars =
+    document.getElementById("chartBars");
 
-const data = await response.json();
+  title.textContent = name + " — Price Chart";
 
-coins.forEach(coin => {
+  bars.innerHTML = "";
 
-const element =
-document.getElementById(coin + "-price");
+  for(let i = 0; i < 35; i++){
 
-if(element && data[coin]){
+    const bar =
+      document.createElement("div");
 
-element.textContent =
-"$" + data[coin].usd;
+    const height =
+      25 + Math.random() * 75;
+
+    bar.style.cssText = `
+      flex:1;
+      height:${height}%;
+      min-width:4px;
+      background:linear-gradient(
+        180deg,
+        #ffd34d,
+        #8c6500
+      );
+      border-radius:5px 5px 0 0;
+      box-shadow:0 0 8px rgba(255,211,77,.18);
+    `;
+
+    bars.appendChild(bar);
+  }
+
+  modal.style.display = "flex";
+}
+
+function closeChart(){
+
+  document.getElementById(
+    "chartModal"
+  ).style.display = "none";
 
 }
 
-});
+document
+  .getElementById("coin-list")
+  .addEventListener("click", function(e){
 
-}catch(error){
+    const card =
+      e.target.closest("#coin-list > div");
 
-console.log("Price error:",error);
+    if(!card) return;
 
-}
+    const name =
+      card.querySelector("h3").textContent;
 
-}
+    openChart(name);
 
-let chart;
+  });
 
-async function showChart(coin){
+document
+  .getElementById("chartModal")
+  .addEventListener("click", function(e){
 
-const title =
-document.getElementById("chartTitle");
+    if(e.target === this){
+      closeChart();
+    }
 
-const status =
-document.getElementById("chartStatus");
-
-title.textContent =
-coin.toUpperCase() + " - 7 Day Chart";
-
-status.textContent = "Loading chart...";
-
-try{
-
-const response = await fetch(
-"https://api.coingecko.com/api/v3/coins/"
-+ coin
-+ "/market_chart?vs_currency=usd&days=7"
-);
-
-const data = await response.json();
-
-const prices = data.prices;
-
-const labels = prices.map(item =>
-new Date(item[0]).toLocaleDateString()
-);
-
-const values = prices.map(item => item[1]);
-
-if(chart){
-
-chart.destroy();
-
-}
-
-const ctx =
-document.getElementById("marketChart")
-.getContext("2d");
-
-chart = new Chart(ctx,{
-
-type:"line",
-
-data:{
-
-labels:labels,
-
-datasets:[{
-
-label:coin.toUpperCase(),
-
-data:values,
-
-borderWidth:2,
-
-fill:false,
-
-tension:0.3
-
-}]
-
-},
-
-options:{
-
-responsive:true,
-
-plugins:{
-
-legend:{
-
-display:true
-
-}
-
-}
-
-}
-
-});
-
-status.textContent =
-"Chart updated successfully.";
-
-}catch(error){
-
-status.textContent =
-"Unable to load chart.";
-
-console.log(error);
-
-}
-
-}
-
-loadPrices();
-
-setInterval(loadPrices,30000);
+  });
 
 </script>
-
-</body>
-
-</html>
