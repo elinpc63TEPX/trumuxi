@@ -2,356 +2,677 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TRUMUXI — a cinematic crypto concept inspired by four global names and the future of digital assets.">
-<meta name="theme-color" content="#070912">
-<title>TRUMUXI — The Future Has a Name</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TRUMUXI | The Future Has A Name</title>
+
 <style>
-:root{
-  --bg:#060812;--card:rgba(18,22,38,.72);--line:rgba(255,255,255,.11);
-  --text:#f7f8ff;--muted:#9da5bd;--gold:#ffd45a;--cyan:#5ee7ff;
-  --purple:#9d6cff;--green:#63f5b0;--danger:#ff6d86;
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:radial-gradient(circle at top,#513508,#050505 60%);
+color:white;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Inter,Arial,sans-serif;background:radial-gradient(circle at 50% -10%,#25204b 0,#0b0d19 35%,var(--bg) 70%);color:var(--text);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,#000,transparent 75%)}
-a{color:inherit;text-decoration:none}
-.container{width:min(1120px,92%);margin:auto}
-.nav{position:fixed;z-index:20;top:14px;left:50%;transform:translateX(-50%);width:min(1100px,94%);padding:12px 16px;border:1px solid var(--line);border-radius:22px;background:rgba(5,7,16,.72);backdrop-filter:blur(18px);display:flex;align-items:center;justify-content:space-between}
-.brand{font-weight:900;letter-spacing:3px;font-size:18px}.brand span{color:var(--gold)}
-.navlinks{display:flex;gap:20px;font-size:13px;color:#cbd0df}.navlinks a:hover{color:var(--gold)}
-.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:13px;border:1px solid var(--line);font-weight:800;font-size:13px;transition:.25s;cursor:pointer}
-.btn.primary{background:linear-gradient(135deg,var(--gold),#ff9f43);color:#17120a;border:0;box-shadow:0 10px 35px rgba(255,191,72,.2)}
-.btn:hover{transform:translateY(-2px)}
-.hero{min-height:850px;display:grid;place-items:center;text-align:center;padding:150px 0 90px;position:relative}
-.orb{position:absolute;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(157,108,255,.26),transparent 65%);filter:blur(10px);animation:pulse 5s infinite alternate}
-@keyframes pulse{to{transform:scale(1.15);opacity:.7}}
-.coin{position:relative;width:190px;height:190px;margin:0 auto 35px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 25%,#fff4bd,#ffc94e 22%,#8f4d13 70%,#241507);box-shadow:0 0 0 8px rgba(255,212,90,.08),0 0 90px rgba(255,186,56,.3),inset 0 0 35px rgba(255,255,255,.35);animation:float 4s ease-in-out infinite}
-.coin:after{content:"T";font-size:105px;font-weight:1000;color:#211404;text-shadow:3px 3px 0 rgba(255,255,255,.22)}
-@keyframes float{50%{transform:translateY(-10px) rotate(2deg)}}
-.kicker{color:var(--gold);font-size:12px;letter-spacing:5px;font-weight:900;margin-bottom:14px}
-h1{font-size:clamp(52px,12vw,112px);line-height:.86;letter-spacing:-5px;background:linear-gradient(90deg,#fff,#ffd45a,#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero p{max-width:700px;margin:25px auto;color:var(--muted);font-size:17px;line-height:1.8}
-.actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
-.ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:15px 0;overflow:hidden;white-space:nowrap;color:#b9c0d3;font-size:12px}
-.ticker span{margin-right:45px}.up{color:var(--green)}
-section{padding:100px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:30px}
-.eyebrow{color:var(--cyan);font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
-h2{font-size:clamp(32px,6vw,58px);letter-spacing:-2px}.sub{color:var(--muted);line-height:1.7;max-width:650px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{border:1px solid var(--line);background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border-radius:22px;padding:25px;box-shadow:0 15px 50px rgba(0,0,0,.15)}
-.card:hover{border-color:rgba(255,212,90,.3);transform:translateY(-3px);transition:.25s}
-.stat{font-size:32px;font-weight:900;margin:10px 0}.label{color:var(--muted);font-size:12px}
-.people{grid-template-columns:repeat(4,1fr)}
-.person{min-height:210px;display:flex;flex-direction:column;justify-content:end;overflow:hidden;position:relative}
-.person:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,rgba(255,212,90,.22),transparent 35%),linear-gradient(145deg,#161b35,#080a12)}
-.person>*{position:relative}.person .letter{font-size:55px;font-weight:1000;color:var(--gold);opacity:.8}.person h3{font-size:21px}.person p{color:var(--muted);font-size:12px;margin-top:5px}
-.tokenomics{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-.bar{height:12px;border-radius:99px;background:#20253a;overflow:hidden;margin:10px 0 22px}.fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:99px}
-.row{display:flex;justify-content:space-between;gap:15px;color:#d9ddec;font-size:13px;margin-bottom:9px}
-.roadmap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.phase{min-height:220px}.phase b{display:inline-block;color:#080a12;background:var(--gold);padding:6px 9px;border-radius:8px;font-size:11px}.phase h3{margin:18px 0 10px}.phase li{list-style:none;color:var(--muted);font-size:13px;line-height:1.8}
-.cta{padding:55px;text-align:center;border:1px solid rgba(255,212,90,.22);border-radius:28px;background:radial-gradient(circle at center,rgba(157,108,255,.18),transparent 65%),rgba(255,255,255,.025)}
-footer{padding:45px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-
-/* Live Market & Chart styles */
-.live-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:20px;margin-top:30px}
-.coin-list{max-height:420px;overflow-y:auto}
-.coin-row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.07)}
-.coin-row:last-child{border-bottom:none}
-.coin-left{display:flex;align-items:center;gap:10px}
-.coin-icon{width:28px;height:28px;border-radius:50%;background:#1c2138;display:grid;place-items:center;font-size:12px;font-weight:700}
-.chart-box{height:320px;position:relative}
-
-@media(max-width:800px){
-  .navlinks{display:none}
-  .grid,.people,.roadmap,.tokenomics,.live-grid{grid-template-columns:1fr}
-  .hero{min-height:760px}
-  .coin{width:145px;height:145px}
-  .coin:after{font-size:80px}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 5%;
+background:#050505;
+border-bottom:1px solid #dcae36;
 }
-@media(max-width:520px){
-  section{padding:75px 0}
-  .grid,.people,.roadmap,.tokenomics{grid-template-columns:1fr}
-  .hero{padding-top:130px}
-  .hero p{font-size:15px}
-  h1{letter-spacing:-3px}
-  .cta{padding:35px 20px}
-  .section-head{display:block}
-  .section-head .sub{margin-top:12px}
+.logo{color:#ffd34d;font-size:22px;font-weight:bold}
+.logo span{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#fff19a,#c88900);
+color:#111;
+border-radius:50%;
+width:30px;height:30px;
+margin-right:5px;
+}
+nav a{color:#e8cd75;text-decoration:none;margin:0 8px;font-size:12px}
+.btn{
+background:linear-gradient(135deg,#fff19a,#dcae36);
+color:#111;
+border:0;
+border-radius:25px;
+padding:11px 20px;
+font-weight:bold;
+cursor:pointer;
+}
+.hero{
+width:92%;
+max-width:1200px;
+margin:25px auto;
+display:grid;
+grid-template-columns:1.4fr .8fr;
+gap:18px;
+}
+.hero-main{
+position:relative;
+overflow:hidden;
+min-height:360px;
+padding:35px 28px;
+border:1px solid #79551b;
+border-radius:22px;
+background:radial-gradient(circle at 75% 50%,#8c570b,#17130d 35%,#04080c 75%);
+}
+.hero-main h1{
+font-size:clamp(42px,7vw,80px);
+font-style:italic;
+color:#ffe18a;
+text-shadow:3px 4px 0 #70440c;
+margin:25px 0 12px;
+}
+.hero-main p{color:#ead9a5;line-height:1.8}
+.orb{
+position:absolute;
+right:8%;
+bottom:25px;
+width:185px;height:185px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:100px;
+font-weight:bold;
+color:#ffe18a;
+background:radial-gradient(circle,#fff19a,#bd7b08 45%,#241605 70%);
+box-shadow:0 0 30px #ffbf3b,0 0 90px #ffbf3b55;
+}
+.market{
+padding:18px;
+border:1px solid #4a3819;
+border-radius:22px;
+background:#070c12;
+}
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:#f6d778;
+font-weight:bold;
+margin-bottom:14px;
+}
+.live{color:#55e58b;font-size:11px}
+.market-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:13px 10px;
+margin:8px 0;
+border:1px solid #29323a;
+border-radius:12px;
+background:#0b1118;
+}
+.market-item small{display:block;color:#8a96a4;margin-top:5px}
+.price{text-align:right;font-size:12px}
+.up{color:#55e58b;font-size:11px;margin-top:4px}
+.people{
+width:92%;
+max-width:1200px;
+margin:18px auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+.person{
+text-align:center;
+padding:20px 8px;
+border:1px solid #61471b;
+border-radius:18px;
+background:linear-gradient(#251a0b,#080b10);
+}
+.face{
+width:85px;height:85px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto auto 10px;
+border-radius:50%;
+font-size:38px;
+background:radial-gradient(circle,#ffe49a,#87580e 55%,#111);
+border:2px solid #dcae36;
+}
+.person h3{color:#ffe18a;font-size:15px}
+.person small{display:block;color:#aeb4bd;margin-top:5px;font-size:11px}
+.badge{
+display:inline-block;
+margin-top:12px;
+padding:5px 10px;
+border-radius:20px;
+background:#111c28;
+border:1px solid #354452;
+color:#e9cf7a;
+font-size:11px;
+}
+.dashboard{
+width:92%;
+max-width:1200px;
+margin:18px auto;
+display:grid;
+grid-template-columns:.7fr 1.5fr .7fr;
+gap:14px;
+}
+.panel{
+padding:18px;
+border:1px solid #293542;
+border-radius:18px;
+background:linear-gradient(#09121b,#05090e);
+}
+.panel h3{color:#f4d675;font-size:16px;margin-bottom:14px}
+.panel p{color:#9faab6;font-size:12px;line-height:1.7}
+.social{
+display:block;
+text-align:center;
+margin-top:12px;
+padding:10px;
+border-radius:24px;
+background:linear-gradient(135deg,#fff0a0,#d99a21);
+color:#211500;
+font-weight:bold;
+font-size:12px;
+text-decoration:none;
+}
+.chart{
+width:100%;
+height:220px;
+background:#07121c;
+border:1px solid #20384b;
+border-radius:12px;
+}
+.visitors{text-align:center}
+.visitor-number{
+font-size:35px;
+font-weight:bold;
+color:#ffe18a;
+margin:25px 0 8px;
+}
+.muted{font-size:11px;color:#8995a2}
+.coins{
+width:92%;
+max-width:1200px;
+margin:25px auto 35px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+}
+.card{
+padding:15px;
+border:1px solid #293542;
+border-radius:16px;
+background:linear-gradient(#0b141e,#05080c);
+}
+.card:hover{border-color:#c99b37}
+.icon{
+width:38px;height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:22px;
+background:#172332;
+border:1px solid #465466;
+}
+.top{display:flex;align-items:center;gap:8px}
+.card h4{font-size:13px}
+.card small{color:#8593a3;font-size:10px}
+.coin-price{
+font-size:15px;
+font-weight:bold;
+color:#ffe18a;
+margin-top:14px;
+}
+.change{color:#55e58b;font-size:11px;margin-top:6px}
+.card button{
+width:100%;
+margin-top:12px;
+padding:8px;
+border:1px solid #74551d;
+border-radius:20px;
+background:#16130c;
+color:#f4d675;
+cursor:pointer;
+}
+footer{
+text-align:center;
+padding:25px;
+border-top:1px solid #2c2518;
+color:#87909b;
+font-size:11px;
+}
+.modal{
+display:none;
+position:fixed;
+inset:0;
+z-index:50;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:#000c;
+}
+.modal-box{
+width:min(500px,100%);
+padding:25px;
+border:1px solid #c69a37;
+border-radius:18px;
+background:#08111a;
+}
+.modal-box h2{color:#ffe18a;margin-bottom:15px}
+.modal-box p{color:#b7c0ca;line-height:1.8;font-size:13px}
+.close{
+float:right;
+background:none;
+border:0;
+color:white;
+font-size:25px;
+cursor:pointer;
+}
+@media(max-width:850px){
+.hero{grid-template-columns:1fr}
+.people{grid-template-columns:repeat(2,1fr)}
+.dashboard{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+.orb{width:130px;height:130px;font-size:70px;opacity:.65}
+}
+@media(max-width:420px){
+nav{padding:12px 3%}
+.logo{font-size:17px}
+nav a{margin:0 3px;font-size:10px}
+.hero-main{padding:25px 18px}
+.hero-main h1{font-size:43px}
+.grid{gap:8px}
+.card{padding:11px}
 }
 </style>
 </head>
+
 <body>
-<nav class="nav">
-  <a class="brand" href="#">TRU<span>MUXI</span></a>
-  <div class="navlinks">
-    <a href="#about">About</a>
-    <a href="#market">Market</a>
-    <a href="#tokenomics">Tokenomics</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#community">Community</a>
-  </div>
-  <a class="btn primary" href="#community">Explore</a>
+
+<nav>
+<div class="logo"><span>T</span>TRUMUXI</div>
+<div>
+<a href="#home">Home</a>
+<a href="#market">Market</a>
+<a href="#coins">Coins</a>
+<a href="#community">Community</a>
+</div>
+<a class="btn" href="#coins">◉ TRMX</a>
 </nav>
 
-<header class="hero">
-  <div class="orb"></div>
-  <div class="container" style="position:relative">
-    <div class="coin"></div>
-    <div class="kicker">A NEW CRYPTO CONCEPT</div>
-    <h1>TRUMUXI</h1>
-    <p>Four names. One symbol. A cinematic vision for a digital asset built around identity, technology and the future.</p>
-    <div class="actions">
-      <a class="btn primary" href="#about">Discover TRUMUXI</a>
-      <a class="btn" href="#roadmap">View Roadmap</a>
-    </div>
-  </div>
-</header>
+<main id="home">
 
-<div class="ticker">
-  <div class="container">
-    <span>TRUMUXI <b>TMX</b></span>
-    <span>TOTAL SUPPLY <b>21,000,000</b></span>
-    <span>PRICE <b class="up">$0.01</b></span>
-    <span>STATUS <b class="up">BUILDING</b></span>
-  </div>
+<section class="hero">
+
+<div class="hero-main">
+<div style="color:#ffd34d;font-weight:bold;font-size:12px">
+THE FUTURE OF DIGITAL CURRENCY
 </div>
 
-<main>
-<!-- About -->
-<section id="about">
-<div class="container">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">The origin</div>
-      <h2>Four names.<br>One identity.</h2>
-    </div>
-    <p class="sub">TRUMUXI is a creative crypto brand concept inspired by four globally recognizable names. The website is designed to evolve as the project gains its real token, contract, community and market data.</p>
-  </div>
-  <div class="grid people">
-    <div class="card person"><div class="letter">T</div><h3>Trump</h3><p>TRUM — the opening identity.</p></div>
-    <div class="card person"><div class="letter">P</div><h3>Putin</h3><p>UX — the power and movement concept.</p></div>
-    <div class="card person"><div class="letter">E</div><h3>Elon</h3><p>MU — technology and innovation.</p></div>
-    <div class="card person"><div class="letter">C</div><h3>China</h3><p>XI — the final signature.</p></div>
-  </div>
+<h1>TRUMUXI</h1>
+
+<p>
+Four Leaders. One Vision.<br>
+The Future Crypto Coin.
+</p>
+
+<button class="btn" style="margin-top:22px"
+onclick="document.getElementById('coins').scrollIntoView({behavior:'smooth'})">
+Explore →
+</button>
+
+<div class="orb">T</div>
 </div>
+
+<div class="market" id="market">
+<div class="title">
+<span>📊 Live Crypto Market</span>
+<span class="live">● LIVE</span>
+</div>
+<div id="marketList"></div>
+</div>
+
 </section>
 
-<!-- Dashboard -->
-<section>
-<div class="container">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Dashboard</div>
-      <h2>Project snapshot</h2>
-    </div>
-    <p class="sub">Live project data for TRUMUXI.</p>
-  </div>
-  <div class="grid">
-    <div class="card"><div class="label">TOKEN SYMBOL</div><div class="stat">TMX</div><div class="label">Official symbol</div></div>
-    <div class="card"><div class="label">TOKEN PRICE</div><div class="stat">$0.01</div><div class="label">Starting price</div></div>
-    <div class="card"><div class="label">TOTAL SUPPLY</div><div class="stat">21M</div><div class="label">21,000,000 TMX</div></div>
-    <div class="card"><div class="label">MARKET CAP</div><div class="stat">$210K</div><div class="label">At starting price</div></div>
-    <div class="card"><div class="label">LIQUIDITY</div><div class="stat">TBA</div><div class="label">To be announced</div></div>
-    <div class="card"><div class="label">CONTRACT</div><div class="stat">TBA</div><div class="label">Add after deployment</div></div>
-  </div>
+<section class="people">
+
+<div class="person">
+<div class="face">🇺🇸</div>
+<h3>Trump</h3>
+<small>TRUMP</small>
+<span class="badge">TRUMP TOKEN</span>
 </div>
+
+<div class="person">
+<div class="face">🇷🇺</div>
+<h3>Putin</h3>
+<small>SOLANA</small>
+<span class="badge">SOL</span>
+</div>
+
+<div class="person">
+<div class="face">🚀</div>
+<h3>Elon</h3>
+<small>DOGECOIN</small>
+<span class="badge">DOGE</span>
+</div>
+
+<div class="person">
+<div class="face">🇨🇳</div>
+<h3>China</h3>
+<small>VECHAIN</small>
+<span class="badge">VET</span>
+</div>
+
 </section>
 
-<!-- Live Market + Chart -->
-<section id="market">
-<div class="container">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Live Data</div>
-      <h2>Market & Chart</h2>
-    </div>
-    <p class="sub">Top 10 cryptocurrencies + TRUMUXI price chart.</p>
-  </div>
+<section class="dashboard">
 
-  <div class="live-grid">
-    <!-- 10 Coins -->
-    <div class="card coin-list">
-      <div class="eyebrow" style="margin-bottom:15px">Top 10 Cryptocurrencies</div>
-      
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">₿</div><div>Bitcoin <small style="color:var(--muted)">BTC</small></div></div>
-        <div style="text-align:right"><div>$76,971</div><small class="up">+2.4%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">Ξ</div><div>Ethereum <small style="color:var(--muted)">ETH</small></div></div>
-        <div style="text-align:right"><div>$2,420</div><small class="up">+3.1%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">◎</div><div>Solana <small style="color:var(--muted)">SOL</small></div></div>
-        <div style="text-align:right"><div>$99.22</div><small class="up">+4.7%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">Ð</div><div>Dogecoin <small style="color:var(--muted)">DOGE</small></div></div>
-        <div style="text-align:right"><div>$0.084</div><small class="up">+2.9%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">BNB</div><div>BNB <small style="color:var(--muted)">BNB</small></div></div>
-        <div style="text-align:right"><div>$612</div><small class="up">+1.8%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">XRP</div><div>XRP <small style="color:var(--muted)">XRP</small></div></div>
-        <div style="text-align:right"><div>$0.58</div><small style="color:var(--danger)">-0.7%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">ADA</div><div>Cardano <small style="color:var(--muted)">ADA</small></div></div>
-        <div style="text-align:right"><div>$0.42</div><small class="up">+1.5%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">AVAX</div><div>Avalanche <small style="color:var(--muted)">AVAX</small></div></div>
-        <div style="text-align:right"><div>$28.40</div><small class="up">+3.2%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">DOT</div><div>Polkadot <small style="color:var(--muted)">DOT</small></div></div>
-        <div style="text-align:right"><div>$5.85</div><small class="up">+2.1%</small></div>
-      </div>
-      <div class="coin-row">
-        <div class="coin-left"><div class="coin-icon">LINK</div><div>Chainlink <small style="color:var(--muted)">LINK</small></div></div>
-        <div style="text-align:right"><div>$13.20</div><small class="up">+4.0%</small></div>
-      </div>
-    </div>
+<div class="panel" id="community">
+<h3>🌐 TRUMUXI Community</h3>
+<p>Join the future crypto movement and follow TRUMUXI updates.</p>
 
-    <!-- Real Chart -->
-    <div class="card">
-      <div class="eyebrow" style="margin-bottom:10px">TRUMUXI Price Chart</div>
-      <div style="display:flex;justify-content:space-between;margin-bottom:15px">
-        <div style="font-size:22px;font-weight:800;color:var(--gold)">$0.01</div>
-        <div class="up">+66% from start</div>
-      </div>
-      <div class="chart-box">
-        <canvas id="tmxChart"></canvas>
-      </div>
-    </div>
-  </div>
+<a class="social" href="#" onclick="alert('Add Telegram link');return false">
+➤ Telegram
+</a>
+
+<a class="social" href="#" onclick="alert('Add X/Twitter link');return false">
+𝕏 X / Twitter
+</a>
 </div>
+
+<div class="panel">
+<h3>📊 TRUMUXI Analytics</h3>
+
+<div class="title">
+<span style="font-size:12px">TRUMUXI Price Chart</span>
+<span style="font-size:11px">TMX $0.01</span>
+</div>
+
+<canvas id="chart" class="chart" width="700" height="300"></canvas>
+
+<div style="display:flex;justify-content:space-between;color:#8794a3;font-size:10px;margin-top:8px">
+<span>Start</span>
+<span>1H</span>
+<span>2H</span>
+<span>3H</span>
+<span>4H</span>
+</div>
+</div>
+
+<div class="panel visitors">
+<h3>👁 Website Visitors</h3>
+<div class="visitor-number" id="visitorNumber">0</div>
+<div class="muted">People visited<br>TRUMUXI</div>
+</div>
+
 </section>
 
-<!-- Tokenomics -->
-<section id="tokenomics">
-<div class="container">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Economy</div>
-      <h2>Tokenomics</h2>
-    </div>
-    <p class="sub">Total Supply fixed at <b style="color:var(--gold)">21,000,000 TMX</b></p>
-  </div>
-  <div class="tokenomics">
-    <div class="card">
-      <div class="row"><span>Community & Ecosystem</span><b>40%</b></div><div class="bar"><div class="fill" style="width:40%"></div></div>
-      <div class="row"><span>Liquidity</span><b>25%</b></div><div class="bar"><div class="fill" style="width:25%"></div></div>
-      <div class="row"><span>Marketing</span><b>15%</b></div><div class="bar"><div class="fill" style="width:15%"></div></div>
-      <div class="row"><span>Development</span><b>10%</b></div><div class="bar"><div class="fill" style="width:10%"></div></div>
-      <div class="row"><span>Treasury / Reserve</span><b>10%</b></div><div class="bar"><div class="fill" style="width:10%"></div></div>
-    </div>
-    <div class="card">
-      <div class="eyebrow">Supply</div>
-      <h3 style="font-size:25px;margin-bottom:15px">21,000,000 TMX</h3>
-      <p class="sub">Fixed total supply. No additional minting planned.</p>
-      <br>
-      <a class="btn primary" href="#community">Join the build</a>
-    </div>
-  </div>
+<section class="coins" id="coins">
+
+<div class="title">
+<span>🔥 Top 10 Crypto Market</span>
+<span class="muted">Online Data</span>
 </div>
+
+<div class="grid" id="coinGrid"></div>
+
 </section>
 
-<!-- Roadmap -->
-<section id="roadmap">
-<div class="container">
-  <div class="section-head">
-    <div>
-      <div class="eyebrow">Mission</div>
-      <h2>Roadmap</h2>
-    </div>
-    <p class="sub">A simple four-stage path from concept to a functioning crypto project.</p>
-  </div>
-  <div class="roadmap">
-    <div class="card phase"><b>PHASE 01</b><h3>Foundation</h3><ul><li>✓ Brand identity</li><li>✓ Website concept</li><li>• Community channels</li><li>• Whitepaper</li></ul></div>
-    <div class="card phase"><b>PHASE 02</b><h3>Build</h3><ul><li>• Choose blockchain</li><li>• Smart contract</li><li>• Token verification</li><li>• Security review</li></ul></div>
-    <div class="card phase"><b>PHASE 03</b><h3>Launch</h3><ul><li>• Liquidity setup</li><li>• Explorer listing</li><li>• Market tracking</li><li>• Community campaign</li></ul></div>
-    <div class="card phase"><b>PHASE 04</b><h3>Expansion</h3><ul><li>• Exchange applications</li><li>• Partnerships</li><li>• Products & utilities</li><li>• Global community</li></ul></div>
-  </div>
-</div>
-</section>
-
-<!-- Community -->
-<section id="community">
-<div class="container">
-  <div class="cta">
-    <div class="eyebrow">TRUMUXI COMMUNITY</div>
-    <h2>The future has a name.</h2>
-    <p class="sub" style="margin:15px auto 25px">Total Supply: <b style="color:var(--gold)">21,000,000 TMX</b> · Starting Price: $0.01</p>
-    <div class="actions">
-      <a class="btn primary" href="#" onclick="alert('Replace this with your official Telegram link');return false">Telegram</a>
-      <a class="btn" href="#" onclick="alert('Replace this with your official X link');return false">X / Twitter</a>
-      <a class="btn" href="#" onclick="alert('Replace this with your contract link');return false">Contract</a>
-    </div>
-  </div>
-</div>
-</section>
 </main>
 
 <footer>
-<div class="container foot">
-  <div>© 2026 TRUMUXI · Total Supply 21,000,000 TMX</div>
-  <div>The Future Has A Name</div>
-</div>
+© 2026 TRUMUXI · The Future Has A Name
 </footer>
 
+<div class="modal" id="modal">
+<div class="modal-box">
+<button class="close" onclick="closeModal()">×</button>
+<h2 id="modalTitle"></h2>
+<p id="modalText"></p>
+</div>
+</div>
+
 <script>
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const id=a.getAttribute('href');
-    if(id && id!=="#"){
-      const el=document.querySelector(id);
-      if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}
-    }
-  });
+
+const coins=[
+{id:'bitcoin',name:'Bitcoin',symbol:'BTC',icon:'₿',price:67967},
+{id:'ethereum',name:'Ethereum',symbol:'ETH',icon:'◆',price:2420.03},
+{id:'solana',name:'Solana',symbol:'SOL',icon:'≋',price:99.22},
+{id:'dogecoin',name:'Dogecoin',symbol:'DOGE',icon:'Ð',price:.083927},
+{id:'tether',name:'Tether',symbol:'USDT',icon:'₮',price:1},
+{id:'binancecoin',name:'BNB',symbol:'BNB',icon:'◆',price:600},
+{id:'ripple',name:'XRP',symbol:'XRP',icon:'✕',price:2.45},
+{id:'cardano',name:'Cardano',symbol:'ADA',icon:'₳',price:.85},
+{id:'avalanche-2',name:'Avalanche',symbol:'AVAX',icon:'A',price:28.4},
+{id:'chainlink',name:'Chainlink',symbol:'LINK',icon:'⬡',price:22.1}
+];
+
+function formatPrice(n){
+return n<1?n.toFixed(6):n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+}
+
+function renderCoins(){
+
+document.getElementById('coinGrid').innerHTML=coins.map((c,i)=>`
+
+<article class="card">
+
+<div class="top">
+<div class="icon">${c.icon}</div>
+<div>
+<h4>${c.name}</h4>
+<small>${c.symbol}</small>
+</div>
+</div>
+
+<div class="coin-price" id="price-${c.id}">
+$${formatPrice(c.price)}
+</div>
+
+<div class="change" id="change-${c.id}">
++${(1.2+i*.37).toFixed(2)}%
+</div>
+
+<button onclick="showCoin('${c.name}','${c.symbol}',${c.price})">
+View Details →
+</button>
+
+</article>
+
+`).join('');
+
+}
+
+function renderMarket(){
+
+document.getElementById('marketList').innerHTML=coins.slice(0,4).map((c,i)=>`
+
+<div class="market-item">
+
+<div>
+<strong>${c.icon} ${c.name}</strong>
+<small>${c.symbol}</small>
+</div>
+
+<div class="price">
+$${formatPrice(c.price)}
+<div class="up">+${(2.4+i*.7).toFixed(1)}%</div>
+</div>
+
+</div>
+
+`).join('');
+
+}
+
+function showCoin(name,symbol,price){
+
+document.getElementById('modalTitle').textContent=name+' ('+symbol+')';
+
+document.getElementById('modalText').textContent=
+'Reference price: $'+formatPrice(price)+
+'. Online market data may be loaded through the CoinGecko public API. TRMX display price is $0.01 and is not a verified market price.';
+
+document.getElementById('modal').style.display='flex';
+
+}
+
+function closeModal(){
+document.getElementById('modal').style.display='none';
+}
+
+async function loadOnlinePrices(){
+
+try{
+
+const ids=coins.map(c=>c.id).join(',');
+
+const response=await fetch(
+'https://api.coingecko.com/api/v3/simple/price?ids='+
+ids+'&vs_currencies=usd&include_24hr_change=true'
+);
+
+if(!response.ok)return;
+
+const data=await response.json();
+
+coins.forEach(c=>{
+
+if(data[c.id]&&data[c.id].usd){
+
+const price=document.getElementById('price-'+c.id);
+const change=document.getElementById('change-'+c.id);
+
+price.textContent='$'+formatPrice(data[c.id].usd);
+
+const value=data[c.id].usd_24h_change||0;
+
+change.textContent=(value>=0?'+':'')+value.toFixed(2)+'%';
+
+change.style.color=value>=0?'#55e58b':'#ff7474';
+
+}
+
 });
 
-// Real Chart
-const ctx = document.getElementById('tmxChart').getContext('2d');
-new Chart(ctx, {
-  type: 'line',
-  data: {
-    labels: ['Start','1H','2H','3H','4H','5H','6H','7H','8H'],
-    datasets: [{
-      label: 'TMX Price',
-      data: [0.006, 0.0072, 0.0081, 0.0089, 0.0085, 0.0093, 0.0098, 0.0096, 0.01],
-      borderColor: '#ffd45a',
-      backgroundColor: 'rgba(255, 212, 90, 0.12)',
-      borderWidth: 3,
-      tension: 0.4,
-      fill: true,
-      pointBackgroundColor: '#ffd45a',
-      pointRadius: 4,
-      pointHoverRadius: 6
-    }]
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { display: false } },
-    scales: {
-      y: {
-        grid: { color: 'rgba(255,255,255,0.06)' },
-        ticks: { color: '#9da5bd' }
-      },
-      x: {
-        grid: { color: 'rgba(255,255,255,0.06)' },
-        ticks: { color: '#9da5bd' }
-      }
-    }
-  }
+}catch(error){
+
+console.log('Online prices unavailable');
+
+}
+
+}
+
+function drawChart(){
+
+const canvas=document.getElementById('chart');
+const ctx=canvas.getContext('2d');
+
+const w=canvas.width;
+const h=canvas.height;
+
+ctx.clearRect(0,0,w,h);
+
+ctx.strokeStyle='#263b4d';
+ctx.lineWidth=1;
+
+for(let i=1;i<5;i++){
+
+let y=i*h/5;
+
+ctx.beginPath();
+ctx.moveTo(25,y);
+ctx.lineTo(w-20,y);
+ctx.stroke();
+
+}
+
+const values=[.006,.008,.009,.0102,.0093,.0095,.0115];
+
+const min=.005;
+const max=.0125;
+
+const points=values.map((v,i)=>({
+
+x:25+i*(w-55)/(values.length-1),
+
+y:h-25-(v-min)/(max-min)*(h-50)
+
+}));
+
+ctx.beginPath();
+
+points.forEach((p,i)=>{
+
+if(i===0)ctx.moveTo(p.x,p.y);
+else ctx.lineTo(p.x,p.y);
+
 });
+
+ctx.lineTo(points[points.length-1].x,h-25);
+ctx.lineTo(points[0].x,h-25);
+ctx.closePath();
+
+ctx.fillStyle='rgba(220,174,54,.12)';
+ctx.fill();
+
+ctx.beginPath();
+
+points.forEach((p,i)=>{
+
+if(i===0)ctx.moveTo(p.x,p.y);
+else ctx.lineTo(p.x,p.y);
+
+});
+
+ctx.strokeStyle='#ffd34d';
+ctx.lineWidth=4;
+ctx.stroke();
+
+points.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,5,0,Math.PI*2);
+ctx.fillStyle='#fff0a0';
+ctx.fill();
+
+});
+
+}
+
+function visitorCounter(){
+
+let count=Number(localStorage.getItem('trumuxiVisitors')||'0');
+
+if(!sessionStorage.getItem('trumuxiSession')){
+
+count++;
+
+localStorage.setItem('trumuxiVisitors',String(count));
+
+sessionStorage.setItem('trumuxiSession','1');
+
+}
+
+document.getElementById('visitorNumber').textContent=count.toLocaleString();
+
+}
+
+renderCoins();
+renderMarket();
+drawChart();
+visitorCounter();
+loadOnlinePrices();
+
+setInterval(loadOnlinePrices,60000);
+
+window.addEventListener('resize',drawChart);
+
 </script>
+
 </body>
 </html>
