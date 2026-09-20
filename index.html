@@ -1,713 +1,678 @@
-<!-- TRUMUXI LIVE COINS - PART 1 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TRUMUXI | The Future Has A Name</title>
 
-<section id="live-coins" style="
-padding:50px 15px;
-background:linear-gradient(180deg,#080808,#151005);
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:radial-gradient(circle at top,#513508,#050505 60%);
 color:white;
-text-align:center;
-">
-
-<h2 style="
-font-size:34px;
-color:#ffd34d;
-margin-bottom:10px;
-">
-🔥 TOP 10 CRYPTO
-</h2>
-
-<p style="
-color:#aaa;
-margin-bottom:30px;
-">
-Live Crypto Market
-</p>
-
-<div id="coin-list" style="
+}
+nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:18px 5%;
+background:#050505;
+border-bottom:1px solid #dcae36;
+}
+.logo{color:#ffd34d;font-size:22px;font-weight:bold}
+.logo span{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(135deg,#fff19a,#c88900);
+color:#111;
+border-radius:50%;
+width:30px;height:30px;
+margin-right:5px;
+}
+nav a{color:#e8cd75;text-decoration:none;margin:0 8px;font-size:12px}
+.btn{
+background:linear-gradient(135deg,#fff19a,#dcae36);
+color:#111;
+border:0;
+border-radius:25px;
+padding:11px 20px;
+font-weight:bold;
+cursor:pointer;
+}
+.hero{
+width:92%;
+max-width:1200px;
+margin:25px auto;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+grid-template-columns:1.4fr .8fr;
 gap:18px;
-max-width:1100px;
-margin:auto;
-">
-
-</div>
-
-</section><script>
-const coins = [
-  {name:"Bitcoin", symbol:"BTC", color:"#f7931a"},
-  {name:"Ethereum", symbol:"ETH", color:"#627eea"},
-  {name:"Tether", symbol:"USDT", color:"#26a17b"},
-  {name:"BNB", symbol:"BNB", color:"#f3ba2f"},
-  {name:"Solana", symbol:"SOL", color:"#9945ff"},
-  {name:"XRP", symbol:"XRP", color:"#ffffff"},
-  {name:"Dogecoin", symbol:"DOGE", color:"#c2a633"},
-  {name:"Cardano", symbol:"ADA", color:"#0033ad"},
-  {name:"TRUMUXI", symbol:"TRMX", color:"#ffd34d"},
-  {name:"Polkadot", symbol:"DOT", color:"#e6007a"}
-];
-
-const coinList = document.getElementById("coin-list");
-
-coins.forEach((coin, index) => {
-
-  const card = document.createElement("div");
-
-  card.style.cssText = `
-    background:linear-gradient(145deg,#171717,#080808);
-    border:1px solid #3a2b0c;
-    border-radius:18px;
-    padding:22px 15px;
-    box-shadow:0 0 20px rgba(255,211,77,.08);
-    cursor:pointer;
-    transition:.3s;
-  `;
-
-  card.innerHTML = `
-    <div style="
-      width:60px;
-      height:60px;
-      border-radius:50%;
-      margin:auto auto 12px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:${coin.color};
-      color:#000;
-      font-weight:bold;
-      font-size:17px;
-    ">
-      ${coin.symbol.substring(0,3)}
-    </div>
-
-    <h3 style="margin-bottom:8px;">
-      ${coin.name}
-    </h3>
-
-    <div style="
-      color:#ffd34d;
-      font-size:20px;
-      font-weight:bold;
-    ">
-      $<span id="price-${index}">0.00</span>
-    </div>
-
-    <div style="
-      margin-top:8px;
-      color:#888;
-      font-size:13px;
-    ">
-      Click for chart
-    </div>
-  `;
-
-  card.onclick = () => {
-    alert(coin.name + " (" + coin.symbol + ") chart will open here.");
-  };
-
-  card.onmouseenter = () => {
-    card.style.transform = "translateY(-6px)";
-    card.style.boxShadow = "0 0 30px rgba(255,211,77,.25)";
-  };
-
-  card.onmouseleave = () => {
-    card.style.transform = "translateY(0)";
-    card.style.boxShadow = "0 0 20px rgba(255,211,77,.08)";
-  };
-
-  coinList.appendChild(card);
-});
-</script><script>
-const coinIds = [
-  "bitcoin",
-  "ethereum",
-  "tether",
-  "binancecoin",
-  "solana",
-  "ripple",
-  "dogecoin",
-  "cardano",
-  "trumuxi",
-  "polkadot"
-];
-
-async function updatePrices() {
-
-  try {
-
-    const url =
-      "https://api.coingecko.com/api/v3/simple/price" +
-      "?ids=" + coinIds.join(",") +
-      "&vs_currencies=usd";
-
-    const response = await fetch(url);
-    const data = await response.json();
-
-    coinIds.forEach((id, index) => {
-
-      const priceBox =
-        document.getElementById("price-" + index);
-
-      if (!priceBox) return;
-
-      if (data[id] && data[id].usd !== undefined) {
-
-        let price = data[id].usd;
-
-        if (price < 1) {
-          price = price.toFixed(6);
-        } else {
-          price = price.toLocaleString(
-            "en-US",
-            {
-              maximumFractionDigits: 2
-            }
-          );
-        }
-
-        priceBox.textContent = price;
-
-      } else {
-
-        priceBox.textContent = "N/A";
-
-      }
-
-    });
-
-  } catch (error) {
-
-    console.log("Price update error:", error);
-
-  }
 }
-
-updatePrices();
-
-setInterval(
-  updatePrices,
-  30000
-);
-</script><style>
-
-#live-coins{
-  position:relative;
-  overflow:hidden;
+.hero-main{
+position:relative;
+overflow:hidden;
+min-height:360px;
+padding:35px 28px;
+border:1px solid #79551b;
+border-radius:22px;
+background:radial-gradient(circle at 75% 50%,#8c570b,#17130d 35%,#04080c 75%);
 }
-
-#live-coins::before{
-  content:"";
-  position:absolute;
-  width:350px;
-  height:350px;
-  background:rgba(255,211,77,.08);
-  border-radius:50%;
-  filter:blur(80px);
-  top:10%;
-  left:50%;
-  transform:translateX(-50%);
-  pointer-events:none;
+.hero-main h1{
+font-size:clamp(42px,7vw,80px);
+font-style:italic;
+color:#ffe18a;
+text-shadow:3px 4px 0 #70440c;
+margin:25px 0 12px;
 }
-
-#coin-list{
-  position:relative;
-  z-index:2;
+.hero-main p{color:#ead9a5;line-height:1.8}
+.orb{
+position:absolute;
+right:8%;
+bottom:25px;
+width:185px;height:185px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:100px;
+font-weight:bold;
+color:#ffe18a;
+background:radial-gradient(circle,#fff19a,#bd7b08 45%,#241605 70%);
+box-shadow:0 0 30px #ffbf3b,0 0 90px #ffbf3b55;
 }
-
-#coin-list > div{
-  min-height:190px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
+.market{
+padding:18px;
+border:1px solid #4a3819;
+border-radius:22px;
+background:#070c12;
 }
-
-#coin-list > div::after{
-  content:"LIVE";
-  display:inline-block;
-  margin:12px auto 0;
-  padding:4px 10px;
-  border:1px solid #4d3b13;
-  border-radius:20px;
-  color:#ffd34d;
-  font-size:10px;
-  letter-spacing:2px;
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center;
+color:#f6d778;
+font-weight:bold;
+margin-bottom:14px;
 }
-
-@media(max-width:600px){
-
-  #live-coins{
-    padding:40px 10px !important;
-  }
-
-  #live-coins h2{
-    font-size:28px !important;
-  }
-
-  #coin-list{
-    grid-template-columns:repeat(2,1fr) !important;
-    gap:10px !important;
-  }
-
-  #coin-list > div{
-    padding:15px 8px !important;
-    min-height:175px;
-  }
-
-  #coin-list h3{
-    font-size:15px;
-  }
-
+.live{color:#55e58b;font-size:11px}
+.market-item{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:13px 10px;
+margin:8px 0;
+border:1px solid #29323a;
+border-radius:12px;
+background:#0b1118;
 }
-
-</style><!-- TRUMUXI COIN CHART MODAL -->
-
-<div id="chartModal" style="
+.market-item small{display:block;color:#8a96a4;margin-top:5px}
+.price{text-align:right;font-size:12px}
+.up{color:#55e58b;font-size:11px;margin-top:4px}
+.people{
+width:92%;
+max-width:1200px;
+margin:18px auto;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+.person{
+text-align:center;
+padding:20px 8px;
+border:1px solid #61471b;
+border-radius:18px;
+background:linear-gradient(#251a0b,#080b10);
+}
+.face{
+width:85px;height:85px;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto auto 10px;
+border-radius:50%;
+font-size:38px;
+background:radial-gradient(circle,#ffe49a,#87580e 55%,#111);
+border:2px solid #dcae36;
+}
+.person h3{color:#ffe18a;font-size:15px}
+.person small{display:block;color:#aeb4bd;margin-top:5px;font-size:11px}
+.badge{
+display:inline-block;
+margin-top:12px;
+padding:5px 10px;
+border-radius:20px;
+background:#111c28;
+border:1px solid #354452;
+color:#e9cf7a;
+font-size:11px;
+}
+.dashboard{
+width:92%;
+max-width:1200px;
+margin:18px auto;
+display:grid;
+grid-template-columns:.7fr 1.5fr .7fr;
+gap:14px;
+}
+.panel{
+padding:18px;
+border:1px solid #293542;
+border-radius:18px;
+background:linear-gradient(#09121b,#05090e);
+}
+.panel h3{color:#f4d675;font-size:16px;margin-bottom:14px}
+.panel p{color:#9faab6;font-size:12px;line-height:1.7}
+.social{
+display:block;
+text-align:center;
+margin-top:12px;
+padding:10px;
+border-radius:24px;
+background:linear-gradient(135deg,#fff0a0,#d99a21);
+color:#211500;
+font-weight:bold;
+font-size:12px;
+text-decoration:none;
+}
+.chart{
+width:100%;
+height:220px;
+background:#07121c;
+border:1px solid #20384b;
+border-radius:12px;
+}
+.visitors{text-align:center}
+.visitor-number{
+font-size:35px;
+font-weight:bold;
+color:#ffe18a;
+margin:25px 0 8px;
+}
+.muted{font-size:11px;color:#8995a2}
+.coins{
+width:92%;
+max-width:1200px;
+margin:25px auto 35px;
+}
+.grid{
+display:grid;
+grid-template-columns:repeat(5,1fr);
+gap:12px;
+}
+.card{
+padding:15px;
+border:1px solid #293542;
+border-radius:16px;
+background:linear-gradient(#0b141e,#05080c);
+}
+.card:hover{border-color:#c99b37}
+.icon{
+width:38px;height:38px;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+font-size:22px;
+background:#172332;
+border:1px solid #465466;
+}
+.top{display:flex;align-items:center;gap:8px}
+.card h4{font-size:13px}
+.card small{color:#8593a3;font-size:10px}
+.coin-price{
+font-size:15px;
+font-weight:bold;
+color:#ffe18a;
+margin-top:14px;
+}
+.change{color:#55e58b;font-size:11px;margin-top:6px}
+.card button{
+width:100%;
+margin-top:12px;
+padding:8px;
+border:1px solid #74551d;
+border-radius:20px;
+background:#16130c;
+color:#f4d675;
+cursor:pointer;
+}
+footer{
+text-align:center;
+padding:25px;
+border-top:1px solid #2c2518;
+color:#87909b;
+font-size:11px;
+}
+.modal{
 display:none;
 position:fixed;
 inset:0;
-background:rgba(0,0,0,.88);
-z-index:99999;
-padding:20px;
+z-index:50;
 align-items:center;
 justify-content:center;
-">
+padding:20px;
+background:#000c;
+}
+.modal-box{
+width:min(500px,100%);
+padding:25px;
+border:1px solid #c69a37;
+border-radius:18px;
+background:#08111a;
+}
+.modal-box h2{color:#ffe18a;margin-bottom:15px}
+.modal-box p{color:#b7c0ca;line-height:1.8;font-size:13px}
+.close{
+float:right;
+background:none;
+border:0;
+color:white;
+font-size:25px;
+cursor:pointer;
+}
+@media(max-width:850px){
+.hero{grid-template-columns:1fr}
+.people{grid-template-columns:repeat(2,1fr)}
+.dashboard{grid-template-columns:1fr}
+.grid{grid-template-columns:repeat(2,1fr)}
+.orb{width:130px;height:130px;font-size:70px;opacity:.65}
+}
+@media(max-width:420px){
+nav{padding:12px 3%}
+.logo{font-size:17px}
+nav a{margin:0 3px;font-size:10px}
+.hero-main{padding:25px 18px}
+.hero-main h1{font-size:43px}
+.grid{gap:8px}
+.card{padding:11px}
+}
+</style>
+</head>
 
-  <div style="
-  width:100%;
-  max-width:800px;
-  background:#0b0b0b;
-  border:1px solid #66501c;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 0 50px rgba(255,211,77,.15);
-  position:relative;
-  ">
+<body>
 
-    <button onclick="closeChart()" style="
-    position:absolute;
-    right:12px;
-    top:10px;
-    width:35px;
-    height:35px;
-    border:0;
-    border-radius:50%;
-    background:#222;
-    color:#ffd34d;
-    font-size:20px;
-    cursor:pointer;
-    ">×</button>
+<nav>
+<div class="logo"><span>T</span>TRUMUXI</div>
+<div>
+<a href="#home">Home</a>
+<a href="#market">Market</a>
+<a href="#coins">Coins</a>
+<a href="#community">Community</a>
+</div>
+<a class="btn" href="#coins">◉ TRMX</a>
+</nav>
 
-    <h2 id="chartTitle" style="
-    color:#ffd34d;
-    text-align:center;
-    margin:10px 0 20px;
-    ">
-    Crypto Chart
-    </h2>
+<main id="home">
 
-    <div style="
-    height:300px;
-    display:flex;
-    align-items:flex-end;
-    gap:7px;
-    padding:20px;
-    border:1px solid #292929;
-    border-radius:15px;
-    background:linear-gradient(180deg,#151515,#080808);
-    " id="chartBars">
-    </div>
+<section class="hero">
 
-    <p style="
-    text-align:center;
-    color:#888;
-    margin-top:15px;
-    font-size:13px;
-    ">
-    TRUMUXI LIVE MARKET
-    </p>
-
-  </div>
+<div class="hero-main">
+<div style="color:#ffd34d;font-weight:bold;font-size:12px">
+THE FUTURE OF DIGITAL CURRENCY
 </div>
 
-<script>
+<h1>TRUMUXI</h1>
 
-function openChart(name){
+<p>
+Four Leaders. One Vision.<br>
+The Future Crypto Coin.
+</p>
 
-  const modal =
-    document.getElementById("chartModal");
+<button class="btn" style="margin-top:22px"
+onclick="document.getElementById('coins').scrollIntoView({behavior:'smooth'})">
+Explore →
+</button>
 
-  const title =
-    document.getElementById("chartTitle");
-
-  const bars =
-    document.getElementById("chartBars");
-
-  title.textContent = name + " — Price Chart";
-
-  bars.innerHTML = "";
-
-  for(let i = 0; i < 35; i++){
-
-    const bar =
-      document.createElement("div");
-
-    const height =
-      25 + Math.random() * 75;
-
-    bar.style.cssText = `
-      flex:1;
-      height:${height}%;
-      min-width:4px;
-      background:linear-gradient(
-        180deg,
-        #ffd34d,
-        #8c6500
-      );
-      border-radius:5px 5px 0 0;
-      box-shadow:0 0 8px rgba(255,211,77,.18);
-    `;
-<!-- ============================= -->
-<!-- TRUMUXI DAILY VISITORS + COINS -->
-<!-- ============================= -->
-
-<section id="crypto-section">
-
-<h2>🔥 TRUMUXI CRYPTO MARKET</h2>
-
-<div class="visitor-box">
-    <div class="visitor-title">👁️ DAILY VISITORS</div>
-    <div class="visitor-number" id="dailyVisitors">0</div>
-    <div class="visitor-total">
-        Total Visitors: <span id="totalVisitors">0</span>
-    </div>
+<div class="orb">T</div>
 </div>
 
-<div class="crypto-grid">
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/bitcoin-btc-logo.png" alt="Bitcoin">
-        <h3>Bitcoin</h3>
-        <p>BTC</p>
-        <strong>$<span id="btcPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/ethereum-eth-logo.png" alt="Ethereum">
-        <h3>Ethereum</h3>
-        <p>ETH</p>
-        <strong>$<span id="ethPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/tether-usdt-logo.png" alt="Tether">
-        <h3>Tether</h3>
-        <p>USDT</p>
-        <strong>$<span id="usdtPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/bnb-bnb-logo.png" alt="BNB">
-        <h3>BNB</h3>
-        <p>BNB</p>
-        <strong>$<span id="bnbPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/solana-sol-logo.png" alt="Solana">
-        <h3>Solana</h3>
-        <p>SOL</p>
-        <strong>$<span id="solPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/xrp-xrp-logo.png" alt="XRP">
-        <h3>XRP</h3>
-        <p>XRP</p>
-        <strong>$<span id="xrpPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/dogecoin-doge-logo.png" alt="Dogecoin">
-        <h3>Dogecoin</h3>
-        <p>DOGE</p>
-        <strong>$<span id="dogePrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/cardano-ada-logo.png" alt="Cardano">
-        <h3>Cardano</h3>
-        <p>ADA</p>
-        <strong>$<span id="adaPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card">
-        <img src="https://cryptologos.cc/logos/avalanche-avax-logo.png" alt="Avalanche">
-        <h3>Avalanche</h3>
-        <p>AVAX</p>
-        <strong>$<span id="avaxPrice">--</span></strong>
-    </div>
-
-    <div class="crypto-card trmx-card">
-        <div class="trmx-logo">T</div>
-        <h3>TRUMUXI</h3>
-        <p>TRMX</p>
-        <strong>$0.01</strong>
-    </div>
-
+<div class="market" id="market">
+<div class="title">
+<span>📊 Live Crypto Market</span>
+<span class="live">● LIVE</span>
+</div>
+<div id="marketList"></div>
 </div>
 
 </section>
 
-<style>
+<section class="people">
 
-#crypto-section{
-    padding:60px 20px;
-    text-align:center;
-    background:
-    radial-gradient(circle at top,#4d3500 0%,#090909 45%,#000 100%);
-}
+<div class="person">
+<div class="face">🇺🇸</div>
+<h3>Trump</h3>
+<small>TRUMP</small>
+<span class="badge">TRUMP TOKEN</span>
+</div>
 
-#crypto-section h2{
-    color:#ffd34d;
-    font-size:32px;
-    margin-bottom:35px;
-    text-shadow:0 0 20px #ffd34d;
-}
+<div class="person">
+<div class="face">🇷🇺</div>
+<h3>Putin</h3>
+<small>SOLANA</small>
+<span class="badge">SOL</span>
+</div>
 
-.visitor-box{
-    max-width:420px;
-    margin:0 auto 40px;
-    padding:25px;
-    border:1px solid #dcae36;
-    border-radius:20px;
-    background:rgba(255,193,7,.08);
-    box-shadow:0 0 30px rgba(255,211,77,.2);
-}
+<div class="person">
+<div class="face">🚀</div>
+<h3>Elon</h3>
+<small>DOGECOIN</small>
+<span class="badge">DOGE</span>
+</div>
 
-.visitor-title{
-    color:#ffd34d;
-    font-size:18px;
-    font-weight:bold;
-}
+<div class="person">
+<div class="face">🇨🇳</div>
+<h3>China</h3>
+<small>VECHAIN</small>
+<span class="badge">VET</span>
+</div>
 
-.visitor-number{
-    font-size:50px;
-    font-weight:bold;
-    color:white;
-    margin:10px 0;
-}
+</section>
 
-.visitor-total{
-    color:#aaa;
-}
+<section class="dashboard">
 
-.crypto-grid{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:20px;
-}
+<div class="panel" id="community">
+<h3>🌐 TRUMUXI Community</h3>
+<p>Join the future crypto movement and follow TRUMUXI updates.</p>
 
-.crypto-card{
-    padding:25px 15px;
-    border:1px solid #9c771d;
-    border-radius:20px;
-    background:linear-gradient(145deg,#171717,#050505);
-    transition:.3s;
-}
+<a class="social" href="#" onclick="alert('Add Telegram link');return false">
+➤ Telegram
+</a>
 
-.crypto-card:hover{
-    transform:translateY(-8px);
-    box-shadow:0 0 30px rgba(255,211,77,.35);
-    border-color:#ffd34d;
-}
+<a class="social" href="#" onclick="alert('Add X/Twitter link');return false">
+𝕏 X / Twitter
+</a>
+</div>
 
-.crypto-card img{
-    width:75px;
-    height:75px;
-    object-fit:contain;
-    margin-bottom:12px;
-}
+<div class="panel">
+<h3>📊 TRUMUXI Analytics</h3>
 
-.crypto-card h3{
-    color:white;
-    margin:5px;
-}
+<div class="title">
+<span style="font-size:12px">TRUMUXI Price Chart</span>
+<span style="font-size:11px">TMX $0.01</span>
+</div>
 
-.crypto-card p{
-    color:#999;
-    margin:5px;
-}
+<canvas id="chart" class="chart" width="700" height="300"></canvas>
 
-.crypto-card strong{
-    display:block;
-    margin-top:12px;
-    color:#ffd34d;
-    font-size:20px;
-}
+<div style="display:flex;justify-content:space-between;color:#8794a3;font-size:10px;margin-top:8px">
+<span>Start</span>
+<span>1H</span>
+<span>2H</span>
+<span>3H</span>
+<span>4H</span>
+</div>
+</div>
 
-.trmx-card{
-    border:2px solid #ffd34d;
-    box-shadow:0 0 25px rgba(255,211,77,.25);
-}
+<div class="panel visitors">
+<h3>👁 Website Visitors</h3>
+<div class="visitor-number" id="visitorNumber">0</div>
+<div class="muted">People visited<br>TRUMUXI</div>
+</div>
 
-.trmx-logo{
-    width:75px;
-    height:75px;
-    margin:0 auto 12px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:45px;
-    font-weight:bold;
-    color:#fff;
-    background:linear-gradient(145deg,#fff19a,#c88900);
-    box-shadow:0 0 35px #ffd34d;
-}
+</section>
 
-@media(max-width:600px){
+<section class="coins" id="coins">
 
-    #crypto-section{
-        padding:40px 12px;
-    }
+<div class="title">
+<span>🔥 Top 10 Crypto Market</span>
+<span class="muted">Online Data</span>
+</div>
 
-    #crypto-section h2{
-        font-size:25px;
-    }
+<div class="grid" id="coinGrid"></div>
 
-    .crypto-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
+</section>
 
-    .crypto-card{
-        padding:18px 8px;
-    }
+</main>
 
-    .crypto-card img,
-    .trmx-logo{
-        width:60px;
-        height:60px;
-    }
+<footer>
+© 2026 TRUMUXI · The Future Has A Name
+</footer>
 
-}
-
-</style>
+<div class="modal" id="modal">
+<div class="modal-box">
+<button class="close" onclick="closeModal()">×</button>
+<h2 id="modalTitle"></h2>
+<p id="modalText"></p>
+</div>
+</div>
 
 <script>
 
-let today = new Date().toISOString().slice(0,10);
+const coins=[
+{id:'bitcoin',name:'Bitcoin',symbol:'BTC',icon:'₿',price:67967},
+{id:'ethereum',name:'Ethereum',symbol:'ETH',icon:'◆',price:2420.03},
+{id:'solana',name:'Solana',symbol:'SOL',icon:'≋',price:99.22},
+{id:'dogecoin',name:'Dogecoin',symbol:'DOGE',icon:'Ð',price:.083927},
+{id:'tether',name:'Tether',symbol:'USDT',icon:'₮',price:1},
+{id:'binancecoin',name:'BNB',symbol:'BNB',icon:'◆',price:600},
+{id:'ripple',name:'XRP',symbol:'XRP',icon:'✕',price:2.45},
+{id:'cardano',name:'Cardano',symbol:'ADA',icon:'₳',price:.85},
+{id:'avalanche-2',name:'Avalanche',symbol:'AVAX',icon:'A',price:28.4},
+{id:'chainlink',name:'Chainlink',symbol:'LINK',icon:'⬡',price:22.1}
+];
 
-let savedDate = localStorage.getItem("trmx_visit_date");
-let daily = parseInt(localStorage.getItem("trmx_daily_visitors") || "0");
-let total = parseInt(localStorage.getItem("trmx_total_visitors") || "0");
-
-if(savedDate !== today){
-    daily = 0;
-    localStorage.setItem("trmx_visit_date",today);
+function formatPrice(n){
+return n<1?n.toFixed(6):n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
 }
 
-daily++;
-total++;
+function renderCoins(){
 
-localStorage.setItem("trmx_daily_visitors",daily);
-localStorage.setItem("trmx_total_visitors",total);
+document.getElementById('coinGrid').innerHTML=coins.map((c,i)=>`
 
-document.getElementById("dailyVisitors").textContent = daily;
-document.getElementById("totalVisitors").textContent = total;
+<article class="card">
 
+<div class="top">
+<div class="icon">${c.icon}</div>
+<div>
+<h4>${c.name}</h4>
+<small>${c.symbol}</small>
+</div>
+</div>
 
-/* CRYPTO PRICES */
+<div class="coin-price" id="price-${c.id}">
+$${formatPrice(c.price)}
+</div>
 
-async function loadCryptoPrices(){
+<div class="change" id="change-${c.id}">
++${(1.2+i*.37).toFixed(2)}%
+</div>
 
-    try{
+<button onclick="showCoin('${c.name}','${c.symbol}',${c.price})">
+View Details →
+</button>
 
-        const response = await fetch(
-        "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,binancecoin,solana,ripple,dogecoin,cardano,avalanche-2&vs_currencies=usd"
-        );
+</article>
 
-        const data = await response.json();
-
-        document.getElementById("btcPrice").textContent =
-        data.bitcoin.usd;
-
-        document.getElementById("ethPrice").textContent =
-        data.ethereum.usd;
-
-        document.getElementById("usdtPrice").textContent =
-        data.tether.usd;
-
-        document.getElementById("bnbPrice").textContent =
-        data.binancecoin.usd;
-
-        document.getElementById("solPrice").textContent =
-        data.solana.usd;
-
-        document.getElementById("xrpPrice").textContent =
-        data.ripple.usd;
-
-        document.getElementById("dogePrice").textContent =
-        data.dogecoin.usd;
-
-        document.getElementById("adaPrice").textContent =
-        data.cardano.usd;
-
-        document.getElementById("avaxPrice").textContent =
-        data["avalanche-2"].usd;
-
-    }catch(error){
-
-        console.log("Price loading error:",error);
-
-    }
+`).join('');
 
 }
 
-loadCryptoPrices();
+function renderMarket(){
 
-setInterval(loadCryptoPrices,30000);
+document.getElementById('marketList').innerHTML=coins.slice(0,4).map((c,i)=>`
+
+<div class="market-item">
+
+<div>
+<strong>${c.icon} ${c.name}</strong>
+<small>${c.symbol}</small>
+</div>
+
+<div class="price">
+$${formatPrice(c.price)}
+<div class="up">+${(2.4+i*.7).toFixed(1)}%</div>
+</div>
+
+</div>
+
+`).join('');
+
+}
+
+function showCoin(name,symbol,price){
+
+document.getElementById('modalTitle').textContent=name+' ('+symbol+')';
+
+document.getElementById('modalText').textContent=
+'Reference price: $'+formatPrice(price)+
+'. Online market data may be loaded through the CoinGecko public API. TRMX display price is $0.01 and is not a verified market price.';
+
+document.getElementById('modal').style.display='flex';
+
+}
+
+function closeModal(){
+document.getElementById('modal').style.display='none';
+}
+
+async function loadOnlinePrices(){
+
+try{
+
+const ids=coins.map(c=>c.id).join(',');
+
+const response=await fetch(
+'https://api.coingecko.com/api/v3/simple/price?ids='+
+ids+'&vs_currencies=usd&include_24hr_change=true'
+);
+
+if(!response.ok)return;
+
+const data=await response.json();
+
+coins.forEach(c=>{
+
+if(data[c.id]&&data[c.id].usd){
+
+const price=document.getElementById('price-'+c.id);
+const change=document.getElementById('change-'+c.id);
+
+price.textContent='$'+formatPrice(data[c.id].usd);
+
+const value=data[c.id].usd_24h_change||0;
+
+change.textContent=(value>=0?'+':'')+value.toFixed(2)+'%';
+
+change.style.color=value>=0?'#55e58b':'#ff7474';
+
+}
+
+});
+
+}catch(error){
+
+console.log('Online prices unavailable');
+
+}
+
+}
+
+function drawChart(){
+
+const canvas=document.getElementById('chart');
+const ctx=canvas.getContext('2d');
+
+const w=canvas.width;
+const h=canvas.height;
+
+ctx.clearRect(0,0,w,h);
+
+ctx.strokeStyle='#263b4d';
+ctx.lineWidth=1;
+
+for(let i=1;i<5;i++){
+
+let y=i*h/5;
+
+ctx.beginPath();
+ctx.moveTo(25,y);
+ctx.lineTo(w-20,y);
+ctx.stroke();
+
+}
+
+const values=[.006,.008,.009,.0102,.0093,.0095,.0115];
+
+const min=.005;
+const max=.0125;
+
+const points=values.map((v,i)=>({
+
+x:25+i*(w-55)/(values.length-1),
+
+y:h-25-(v-min)/(max-min)*(h-50)
+
+}));
+
+ctx.beginPath();
+
+points.forEach((p,i)=>{
+
+if(i===0)ctx.moveTo(p.x,p.y);
+else ctx.lineTo(p.x,p.y);
+
+});
+
+ctx.lineTo(points[points.length-1].x,h-25);
+ctx.lineTo(points[0].x,h-25);
+ctx.closePath();
+
+ctx.fillStyle='rgba(220,174,54,.12)';
+ctx.fill();
+
+ctx.beginPath();
+
+points.forEach((p,i)=>{
+
+if(i===0)ctx.moveTo(p.x,p.y);
+else ctx.lineTo(p.x,p.y);
+
+});
+
+ctx.strokeStyle='#ffd34d';
+ctx.lineWidth=4;
+ctx.stroke();
+
+points.forEach(p=>{
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,5,0,Math.PI*2);
+ctx.fillStyle='#fff0a0';
+ctx.fill();
+
+});
+
+}
+
+function visitorCounter(){
+
+let count=Number(localStorage.getItem('trumuxiVisitors')||'0');
+
+if(!sessionStorage.getItem('trumuxiSession')){
+
+count++;
+
+localStorage.setItem('trumuxiVisitors',String(count));
+
+sessionStorage.setItem('trumuxiSession','1');
+
+}
+
+document.getElementById('visitorNumber').textContent=count.toLocaleString();
+
+}
+
+renderCoins();
+renderMarket();
+drawChart();
+visitorCounter();
+loadOnlinePrices();
+
+setInterval(loadOnlinePrices,60000);
+
+window.addEventListener('resize',drawChart);
 
 </script>
-    bars.appendChild(bar);
-  }
 
-  modal.style.display = "flex";
-}
-
-function closeChart(){
-
-  document.getElementById(
-    "chartModal"
-  ).style.display = "none";
-
-}
-
-document
-  .getElementById("coin-list")
-  .addEventListener("click", function(e){
-
-    const card =
-      e.target.closest("#coin-list > div");
-
-    if(!card) return;
-
-    const name =
-      card.querySelector("h3").textContent;
-
-    openChart(name);
-
-  });
-
-document
-  .getElementById("chartModal")
-  .addEventListener("click", function(e){
-
-    if(e.target === this){
-      closeChart();
-    }
-
-  });
-
-</script>
+</body>
+  </html>
