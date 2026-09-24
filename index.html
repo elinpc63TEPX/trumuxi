@@ -98,11 +98,8 @@
       padding: 30px 24px 60px;
     }
 
-    /* Hero + Live Market */
+    /* Hero */
     .hero-section {
-      display: grid;
-      grid-template-columns: 1.4fr 1fr;
-      gap: 24px;
       margin-bottom: 28px;
     }
 
@@ -110,7 +107,7 @@
       background: linear-gradient(145deg, #141414, #0d0d0d);
       border: 1px solid #2a2a2a;
       border-radius: 20px;
-      padding: 40px 36px;
+      padding: 50px 48px;
       position: relative;
       overflow: hidden;
       min-height: 320px;
@@ -123,9 +120,9 @@
       content: '';
       position: absolute;
       top: -50%;
-      right: -30%;
-      width: 400px;
-      height: 400px;
+      right: -20%;
+      width: 500px;
+      height: 500px;
       background: radial-gradient(circle, rgba(240,185,11,0.15) 0%, transparent 70%);
       pointer-events: none;
     }
@@ -139,7 +136,7 @@
     }
 
     .hero-title {
-      font-size: 52px;
+      font-size: 56px;
       font-weight: 800;
       color: #f0b90b;
       line-height: 1.1;
@@ -150,7 +147,7 @@
       font-size: 18px;
       color: #aaa;
       margin-bottom: 28px;
-      max-width: 380px;
+      max-width: 420px;
     }
 
     .explore-btn {
@@ -176,17 +173,17 @@
 
     .glow-t {
       position: absolute;
-      right: 50px;
+      right: 80px;
       top: 50%;
       transform: translateY(-50%);
-      width: 140px;
-      height: 140px;
+      width: 150px;
+      height: 150px;
       background: radial-gradient(circle, #f0b90b 0%, #d4a017 40%, transparent 70%);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 64px;
+      font-size: 68px;
       font-weight: 800;
       color: #000;
       box-shadow: 0 0 60px rgba(240,185,11,0.5);
@@ -197,95 +194,6 @@
       0%, 100% { box-shadow: 0 0 40px rgba(240,185,11,0.4); }
       50% { box-shadow: 0 0 80px rgba(240,185,11,0.7); }
     }
-
-    /* Live Market */
-    .live-market {
-      background: #111;
-      border: 1px solid #2a2a2a;
-      border-radius: 20px;
-      padding: 24px;
-    }
-
-    .live-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .live-header h3 {
-      font-size: 16px;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .live-badge {
-      background: #0f0;
-      color: #000;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 8px;
-      border-radius: 4px;
-    }
-
-    .coin-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 0;
-      border-bottom: 1px solid #222;
-    }
-
-    .coin-row:last-child {
-      border-bottom: none;
-    }
-
-    .coin-info {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .coin-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      background: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 700;
-    }
-
-    .coin-name {
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .coin-symbol {
-      font-size: 12px;
-      color: #888;
-    }
-
-    .coin-price {
-      text-align: right;
-    }
-
-    .price {
-      font-weight: 600;
-      font-size: 15px;
-    }
-
-    .change {
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .up { color: #0f0; }
-    .down { color: #f44; }
 
     /* Leaders */
     .leaders {
@@ -517,6 +425,9 @@
       margin-bottom: 12px;
     }
 
+    .up { color: #0f0; }
+    .down { color: #f44; }
+
     .view-btn {
       width: 100%;
       background: #1a1a1a;
@@ -548,7 +459,6 @@
 
     /* Responsive */
     @media (max-width: 1100px) {
-      .hero-section { grid-template-columns: 1fr; }
       .leaders { grid-template-columns: repeat(2, 1fr); }
       .bottom-grid { grid-template-columns: 1fr; }
       .top10-grid { grid-template-columns: repeat(3, 1fr); }
@@ -560,6 +470,7 @@
       nav { display: none; }
       .top10-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-title { font-size: 36px; }
+      .hero-card { padding: 36px 24px; }
       .leaders { grid-template-columns: 1fr 1fr; }
     }
   </style>
@@ -581,7 +492,7 @@
   </header>
 
   <div class="container">
-    <!-- Hero + Live Market -->
+    <!-- Hero -->
     <div class="hero-section">
       <div class="hero-card">
         <div class="hero-label">THE FUTURE OF DIGITAL CURRENCY</div>
@@ -589,16 +500,6 @@
         <p class="hero-desc">Four Leaders. One Vision.<br>The Future Crypto Coin.</p>
         <button class="explore-btn">Explore →</button>
         <div class="glow-t">T</div>
-      </div>
-
-      <div class="live-market">
-        <div class="live-header">
-          <h3>📊 Live Crypto Market</h3>
-          <span class="live-badge">LIVE</span>
-        </div>
-        <div id="live-coins">
-          <!-- filled by JS -->
-        </div>
       </div>
     </div>
 
@@ -670,33 +571,6 @@
   </footer>
 
   <script>
-    // Live Market Data
-    const liveData = [
-      { name: "Bitcoin", symbol: "BTC", price: 67967.00, change: 2.4, icon: "₿" },
-      { name: "Ethereum", symbol: "ETH", price: 2420.03, change: 3.1, icon: "Ξ" },
-      { name: "Solana", symbol: "SOL", price: 99.22, change: 3.8, icon: "◎" },
-      { name: "Dogecoin", symbol: "DOGE", price: 0.083927, change: 4.5, icon: "Ð" }
-    ];
-
-    function renderLive() {
-      const container = document.getElementById("live-coins");
-      container.innerHTML = liveData.map(c => `
-        <div class="coin-row">
-          <div class="coin-info">
-            <div class="coin-icon">${c.icon}</div>
-            <div>
-              <div class="coin-name">${c.name}</div>
-              <div class="coin-symbol">${c.symbol}</div>
-            </div>
-          </div>
-          <div class="coin-price">
-            <div class="price">\[ {c.price.toLocaleString(undefined, {minimumFractionDigits: 2})}</div>
-            <div class="change \( {c.change >= 0 ? 'up' : 'down'}"> \){c.change >= 0 ? '+' : ''}${c.change}%</div>
-          </div>
-        </div>
-      `).join("");
-    }
-
     // Top 10 Data
     const top10Data = [
       { name: "Bitcoin", symbol: "BTC", price: 84016.00, change: -1.78, icon: "₿" },
@@ -722,7 +596,7 @@
               <div class="coin-card-symbol">${c.symbol}</div>
             </div>
           </div>
-          <div class="coin-card-price"> \]{c.price.toLocaleString(undefined, {minimumFractionDigits: c.price < 1 ? 6 : 2})}</div>
+          <div class="coin-card-price">$${c.price.toLocaleString(undefined, {minimumFractionDigits: c.price < 1 ? 6 : 2})}</div>
           <div class="coin-card-change \( {c.change >= 0 ? 'up' : 'down'}"> \){c.change}%</div>
           <button class="view-btn">View Details →</button>
         </div>
@@ -795,7 +669,6 @@
     }
 
     // Init
-    renderLive();
     renderTop10();
     drawChart();
     animateVisitors();
